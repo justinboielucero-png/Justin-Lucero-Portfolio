@@ -1,6 +1,8 @@
 <!doctype html>
 <html lang="en">
 <head>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+  <script>try{const t=localStorage.getItem('portfolio-polish-theme')||'light';document.documentElement.dataset.theme=t;document.documentElement.classList.toggle('light',t==='light')}catch{document.documentElement.dataset.theme='light';document.documentElement.classList.add('light')}</script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="theme-color" content="#081321" />
@@ -8,13 +10,14 @@
   <title>Justin Boie Lucero — E-Portfolio</title>
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
   <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="refresh.css?v=20261102">
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
   <div class="cursor-glow" aria-hidden="true"></div>
   <div class="page-shell">
     <header class="sidebar">
-      <div class="sidebar-inner">
+      <div class="sidebar-inner"><div class="sidebar-tools"><span>MADE TO KEEP GROWING</span><button class="theme-control" id="refresh-theme" type="button" aria-label="Switch to dark theme"></button></div>
         <div class="eyebrow"><span class="online-dot"></span> STUDENT PORTFOLIO <span class="eyebrow-line"></span> 2026</div>
         <a class="identity" href="#welcome" aria-label="Back to welcome"><span class="identity-first">Justin Boie</span><span class="identity-last">Lucero<span class="period">.</span></span></a>
         <h1>BS Information Technology Student</h1>
@@ -74,5 +77,6 @@
     </main>
   </div>
   <script src="script.js"></script>
+  <script src="refresh.js?v=20261102" defer></script>
 </body>
 </html>
