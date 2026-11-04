@@ -1,6 +1,6 @@
-# Sylvon James Gonzaga — JRU E-Portfolio
+# Justin Boie Lucero — JRU E-Portfolio
 
-A responsive frontend-only e-portfolio inspired by the structure and feel of [brittanychiang.com](https://brittanychiang.com/), with a distinct original layout implementation and styling.
+A responsive, frontend-only student e-portfolio for Justin Boie Lucero, documenting Information Technology coursework, selected projects, experiences, and learning reflections.
 
 ## Run locally
 
