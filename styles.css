@@ -225,3 +225,28 @@ a:hover{color:var(--blue-soft)}
 .profile-photo figcaption{font-size:9px;letter-spacing:.16em;color:#8CCBFF;font-weight:800;margin-top:17px}
 .about-layout .prose{min-width:0}
 @media(max-width:700px){.about-layout{grid-template-columns:1fr;gap:24px}.profile-photo{max-width:190px}.profile-photo:after{inset:8px -8px -8px 8px}}
+
+
+/* Portfolio photography and selected visual work */
+.visual-heading{margin-top:54px}
+.visual-intro{margin-bottom:18px}
+.visual-work-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.visual-work-card{min-width:0;padding:22px;border:1px solid #ffffff16;background:linear-gradient(145deg,#ffffff0b,#ffffff03);border-radius:5px;backdrop-filter:blur(10px)}
+.visual-work-card--wide{grid-column:1/-1}
+.visual-work-meta{color:#8CCBFF;font-size:9px;font-weight:800;letter-spacing:.18em;margin-bottom:9px}
+.visual-work-card h4{font-size:19px;letter-spacing:-.025em;margin:0 0 7px}
+.visual-work-card>p{font-size:13px;color:#aab5c4;line-height:1.7;margin:0 0 17px}
+.work-image-pair{display:grid;grid-template-columns:1fr 1fr;gap:12px;align-items:start}
+.work-image-pair figure,.work-image-single{min-width:0;margin:0}
+.work-image-pair img{display:block;width:100%;height:clamp(210px,30vw,350px);object-fit:cover;object-position:center;border-radius:3px;background:#080b10}
+.work-image-single img{display:block;width:100%;aspect-ratio:16/9;height:auto;object-fit:cover;object-position:center;border-radius:3px;background:#080b10}
+.work-image-pair figcaption,.work-image-single figcaption{margin-top:10px;color:#8CCBFF;font-size:9px;letter-spacing:.14em;font-weight:800}
+@media(max-width:760px){
+  .visual-work-grid{grid-template-columns:1fr}
+  .visual-work-card--wide{grid-column:auto}
+  .work-image-pair img{height:clamp(190px,58vw,320px)}
+}
+@media(max-width:390px){
+  .work-image-pair{gap:8px}
+  .visual-work-card{padding:16px}
+}
