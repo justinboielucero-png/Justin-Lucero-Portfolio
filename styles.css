@@ -215,3 +215,13 @@ a:hover{color:var(--blue-soft)}
   .contact-section:after{width:150px;height:150px;right:-22%;opacity:.6}
 }
 @media(prefers-reduced-motion:reduce){.hero-art{transform:translateY(-48%) rotate(7deg)}}
+
+
+/* Batch 1 — profile portrait */
+.about-layout{display:grid;grid-template-columns:minmax(150px,220px) minmax(0,1fr);gap:28px;align-items:start}
+.profile-photo{margin:0;position:relative;max-width:220px}
+.profile-photo img{display:block;width:100%;aspect-ratio:1/1;object-fit:cover;object-position:center 28%;border-radius:10px;border:1px solid #3a4655;box-shadow:0 22px 50px #0008,0 0 0 6px #0A90FF0b}
+.profile-photo:after{content:"";position:absolute;inset:9px -9px -9px 9px;border:1px solid #0A90FF65;border-radius:10px;z-index:-1}
+.profile-photo figcaption{font-size:9px;letter-spacing:.16em;color:#8CCBFF;font-weight:800;margin-top:17px}
+.about-layout .prose{min-width:0}
+@media(max-width:700px){.about-layout{grid-template-columns:1fr;gap:24px}.profile-photo{max-width:190px}.profile-photo:after{inset:8px -8px -8px 8px}}
