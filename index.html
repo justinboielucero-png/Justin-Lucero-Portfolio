@@ -5,7 +5,7 @@
 <meta name="theme-color" content="#03070d">
 <meta name="description" content="Justin Boie E. Lucero's Computer Programming 1 e-portfolio — coursework, projects, creative work and learning reflections at Jose Rizal University.">
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@600&family=Manrope:wght@400;500;600;700;800&display=swap">
 <style>
 :root{--bg:#03070d;--ink:#e9f3ff;--mut:#95a8bd;--v:#2563eb;--c:#38bdf8;--p:#60a5fa;--line:rgba(255,255,255,.1);--card:rgba(255,255,255,.04);color-scheme:dark;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
 html{scroll-behavior:smooth;scroll-padding-top:90px}
@@ -678,6 +678,43 @@ body,main,nav,section,footer,button{font-family:var(--font-primary)}
 }
 @media(prefers-reduced-motion:reduce){
   .hero .mq div#mq{animation:none!important}
+}
+
+
+/* Specified hero typeface: Fira Code SemiBold, synthetically slanted (oblique).
+   Retain Manrope for body, controls, and dense informational sections. */
+.hero-full-name,
+.hero-full-name .name-line,
+.hero-full-name .name-last,
+.hero-full-name .name-period{
+  font-family:'Fira Code',ui-monospace,'SFMono-Regular',Consolas,monospace;
+  font-weight:600;
+  font-style:oblique 11deg;
+  font-synthesis:style;
+  font-variant-ligatures:none;
+}
+.hero-full-name{
+  font-size:clamp(45px,4.55vw,77px);
+  line-height:1.16;
+  letter-spacing:-.055em;
+}
+.hero-full-name .name-line{
+  max-width:100%;
+  white-space:nowrap;
+  letter-spacing:inherit;
+}
+.hero-full-name .name-period{font-weight:600}
+@media(max-width:1250px){
+ .hero-full-name{font-size:clamp(43px,4.55vw,68px)}
+}
+@media(max-width:950px){
+ .hero-full-name{font-size:clamp(40px,4.8vw,57px)}
+}
+@media(max-width:760px){
+ .hero-full-name{font-size:clamp(35px,6.7vw,53px);letter-spacing:-.055em}
+}
+@media(max-width:480px){
+ .hero-full-name{font-size:clamp(30px,7.7vw,39px);letter-spacing:-.058em}
 }
 
 </style></head>
