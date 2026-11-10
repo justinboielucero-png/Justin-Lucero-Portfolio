@@ -304,6 +304,63 @@ footer{padding-inline:var(--page-gutter)}
   footer{gap:12px}
 }
 
+
+/* Full-width layout refined: approximately 10% smaller content, same edge-to-edge sections. */
+:root{--page-gutter:clamp(24px,4.2vw,88px);--wide-gap:clamp(17px,2.1vw,34px)}
+main > section{padding-block:clamp(110px,8.7vw,150px) clamp(68px,6.3vw,100px)}
+.hero{padding-top:clamp(120px,12vh,170px)}
+.hero-copy{width:min(65%,1050px)}
+.hero h1{font-size:clamp(74px,10vw,165px)}
+.hero p{font-size:clamp(16px,1.25vw,19px)}
+#about > h2{font-size:clamp(49px,5.9vw,98px);margin-bottom:clamp(28px,3.3vw,52px)}
+#about .about{grid-template-columns:minmax(0,.8fr) minmax(0,1.3fr);gap:clamp(28px,4vw,82px)}
+#about .photo{min-height:clamp(410px,40vw,600px)}
+#about .about-description{padding:clamp(22px,2.5vw,45px)}
+#about .about-description .prose{font-size:clamp(16px,1.05vw,19px);line-height:1.7}
+#about .about-description .prose p{margin-bottom:clamp(14px,1.2vw,20px)}
+#about .fact{padding:clamp(20px,2vw,30px);min-height:128px}
+#about .stats b{font-size:clamp(34px,2.9vw,43px)}
+.section-heading{font-size:clamp(54px,5.6vw,94px)}
+.section-description{font-size:clamp(15px,.96vw,17px)}
+.course-banner{min-height:192px;padding:clamp(28px,3.5vw,54px);margin-block:34px 48px}
+.items-heading{margin-top:clamp(40px,4.4vw,66px)}
+.items-heading h3{font-size:clamp(28px,2.6vw,45px)}
+.archive-card{padding:clamp(22px,2.2vw,37px)}
+.project-card{padding:clamp(25px,2.7vw,46px)}
+.visual-work-card{padding:clamp(22px,2.1vw,38px)}
+.work-image-pair img{height:min(35vw,610px)}
+.work-image-single img{height:min(24vw,420px)}
+.timeline-item{padding:clamp(25px,2.2vw,40px)}
+.reflection-panel{padding:clamp(32px,3.9vw,72px);min-height:385px}
+.reflection-panel h3{font-size:clamp(37px,3.5vw,58px)}
+.reflection-panel>p{font-size:clamp(16px,1vw,19px)}
+.contact-title{font-size:clamp(67px,8vw,134px)}
+@media(max-width:1100px){
+  #about .photo{min-height:420px}
+  .hero-copy{width:min(80%,830px)}
+}
+@media(max-width:760px){
+  main > section{padding:108px var(--page-gutter) 65px}
+  .hero{padding-top:clamp(120px,18vh,165px)}
+  .hero-copy{width:100%}
+  .hero h1{font-size:clamp(61px,11.5vw,104px)}
+  #about > h2{font-size:clamp(46px,9vw,70px)}
+  #about .about{grid-template-columns:1fr;gap:18px}
+  #about .photo{min-height:330px}
+  #about .about-description{padding:22px}
+  #about .about-description .prose{font-size:16px}
+  .section-heading{font-size:clamp(41px,7vw,68px)}
+  .archive-card,.project-card,.visual-work-card{padding:22px}
+  .work-image-pair img,.work-image-single img{height:auto}
+  .reflection-panel{min-height:0;padding:25px}
+  .contact-title{font-size:clamp(59px,10vw,90px)}
+}
+@media(max-width:480px){
+  .hero h1{font-size:clamp(53px,12vw,69px)}
+  #about .photo{min-height:285px}
+  #about .fact{min-height:108px;padding:18px}
+}
+
 </style></head>
 <body>
 <div id="bar"></div><div id="cd"></div><div id="cr"></div><canvas id="gl"></canvas>
