@@ -52,7 +52,7 @@ def main() -> None:
         html = html.replace(f"assets/portfolio/{name}.webp", f"assets/portfolio/{name}-hq.png")
         # Update declared dimensions while keeping the aspect ratio.
         marker = f'src="assets/portfolio/{name}-hq.png"'
-        pattern = re.compile(r'(<img\\s+[^>]*' + re.escape(marker) + r'[^>]*?)\\s+width="\\d+"\\s+height="\\d+"')
+        pattern = re.compile(r'(<img\s+[^>]*' + re.escape(marker) + r'[^>]*?)\s+width="\d+"\s+height="\d+"')
         html = pattern.sub(lambda m: m.group(1) + f' width="{size[0]}" height="{size[1]}"', html)
         print(f"{src.relative_to(ROOT)} -> {dest.relative_to(ROOT)} | {size[0]}x{size[1]} | {dest.stat().st_size:,} bytes")
     index.write_text(html, encoding="utf-8")
