@@ -5,7 +5,7 @@
 <meta name="theme-color" content="#03070d">
 <meta name="description" content="Justin Boie E. Lucero's Computer Programming 1 e-portfolio — coursework, projects, creative work and learning reflections at Jose Rizal University.">
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Instrument+Serif:ital@0;1&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap">
 <style>
 :root{--bg:#03070d;--ink:#e9f3ff;--mut:#95a8bd;--v:#2563eb;--c:#38bdf8;--p:#60a5fa;--line:rgba(255,255,255,.1);--card:rgba(255,255,255,.04);color-scheme:dark;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
 html{scroll-behavior:smooth;scroll-padding-top:90px}
@@ -361,6 +361,152 @@ main > section{padding-block:clamp(110px,8.7vw,150px) clamp(68px,6.3vw,100px)}
   #about .fact{min-height:108px;padding:18px}
 }
 
+
+/* Professional site-wide typography — one cohesive type family.
+   WCRP and Plus Jakarta Sans foundry type guidance informed the selection. */
+:root{
+  --font-primary:'Plus Jakarta Sans',Arial,Helvetica,sans-serif;
+  --text-heading:#f1f6fd;
+  --text-primary:#d9e5f3;
+  --text-secondary:#abbdd1;
+  --tracking-tight:-.04em;
+}
+html,body,main,nav,section,footer,button,input,textarea,select{
+  font-family:var(--font-primary);
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+}
+body{font:400 16px/1.75 var(--font-primary);color:var(--text-primary)}
+h1,h2,h3,h4,h5,h6,
+.hero h1,.section-heading,#about>h2,.items-heading h3,
+.course-banner h3,.contact-title,.reflection-panel h3,
+.pane h3,.stats b,.identity-art b,.mq div{
+  font-family:var(--font-primary);
+  font-style:normal;
+  text-transform:none;
+  font-weight:600;
+  letter-spacing:var(--tracking-tight);
+  color:var(--text-heading);
+}
+.hero h1{
+  font-size:clamp(64px,7.5vw,126px);
+  line-height:1.06;
+  letter-spacing:-.067em;
+  font-weight:700;
+  margin:24px 0 22px;
+}
+.hero-name-heading{display:flex;flex-direction:column;align-items:flex-start;gap:8px;max-width:100%}
+.hero-greeting{
+  display:block;
+  font-family:var(--font-primary);
+  font-size:clamp(30px,2.7vw,49px);
+  line-height:1.2;
+  font-weight:500;
+  letter-spacing:-.045em;
+  color:#d3e4fa;
+}
+.hero-full-name{
+  display:block;
+  max-width:100%;
+  font-family:var(--font-primary);
+  font-style:normal;
+  font-weight:700;
+  font-size:clamp(58px,6.35vw,114px);
+  line-height:1.1;
+  letter-spacing:-.066em;
+  color:#f1f6ff;
+  overflow-wrap:normal;
+  word-break:normal;
+  text-shadow:0 12px 44px #0008;
+}
+.hero-full-name .name-period{
+  font-family:inherit;
+  font-size:inherit;
+  font-weight:inherit;
+  font-style:inherit;
+  letter-spacing:inherit;
+  color:#50a1ff;
+}
+.hero .tag{font-family:var(--font-primary);font-weight:600}
+#about>h2{font-size:clamp(44px,5.05vw,86px);line-height:1.15;letter-spacing:-.055em;font-weight:600}
+#about>h2>span:first-child{
+  display:block;font-size:12px;line-height:1.4;letter-spacing:.16em;
+  font-weight:700;color:#69b2ff;margin-bottom:20px;
+}
+.about-heading-accent{font:inherit;letter-spacing:inherit;color:#8dc3ff}
+.section-heading{font-size:clamp(43px,4.85vw,83px);line-height:1.12;letter-spacing:-.055em;font-weight:650}
+.section-heading .section-dot{font:inherit;letter-spacing:inherit;color:#3993fc}
+.items-heading h3{font-size:clamp(26px,2.15vw,37px);line-height:1.24;font-weight:600;letter-spacing:-.045em}
+.course-banner h3{font-size:clamp(27px,2.8vw,43px);line-height:1.2;font-weight:650}
+.archive-top h4,.project-content h4,.visual-work-card h4{
+  font-family:var(--font-primary);
+  font-size:clamp(19px,1.35vw,26px);
+  line-height:1.4;
+  font-weight:650;
+  letter-spacing:-.035em;
+  color:#f0f6ff;
+}
+.timeline-item h3{font-family:var(--font-primary);font-size:clamp(20px,1.5vw,27px);line-height:1.35;font-weight:600;letter-spacing:-.035em}
+.reflection-panel h3{font-size:clamp(32px,3vw,50px);font-weight:650;line-height:1.2;letter-spacing:-.05em}
+.contact-title{font-size:clamp(56px,6.9vw,119px);font-weight:700;line-height:1.08;letter-spacing:-.06em}
+.contact-title em{font-family:inherit;font-style:normal;font-weight:inherit;color:#6cafff}
+.identity-art b{font-family:var(--font-primary);font-size:clamp(95px,12vw,175px);font-weight:600;letter-spacing:-.105em;color:#d4e8ff}
+.identity-art small{font-family:var(--font-primary);font-weight:600;letter-spacing:.11em}
+.stats b{font-size:clamp(30px,2.35vw,39px);font-weight:650;letter-spacing:-.065em}
+.mq div{font-size:clamp(20px,2vw,28px);font-weight:500;letter-spacing:-.03em}
+.hero-index-label,.tag,.mobile-label,.contact-kicker,
+.fact-label,.banner-kicker,.file-type,.timeline-date,.visual-work-meta,
+.project-num,.section-overline,.archive-icon,.hero-bottom,.items-heading>span,
+.reflection-header,.reflection-note span,#reflection-counter,figcaption{
+  font-family:var(--font-primary);
+  font-style:normal;
+  font-size:11px;
+  font-weight:700;
+  letter-spacing:.11em;
+  line-height:1.55;
+}
+nav a{font-family:var(--font-primary);font-size:12px;font-weight:600;letter-spacing:-.015em}
+nav a.on{font-weight:700}
+.btn,.contact-link,.term-tab{font-family:var(--font-primary);font-size:13px;font-weight:600;letter-spacing:-.01em}
+.about-description .prose,.prose,.section-description,.archive-card p,
+.project-card p,.timeline-item p,.visual-work-card p,.reflection-panel>p,
+.reflection-note p,.course-banner p,.contact-section>p{
+  font-family:var(--font-primary);
+  font-weight:400;
+  letter-spacing:-.009em;
+  line-height:1.78;
+  color:var(--text-secondary);
+}
+.about-description strong,.prose strong{font-family:inherit;font-weight:700;color:#ebf4ff}
+.about-description .prose{font-size:clamp(15px,1.03vw,18px)}
+.hero p{font-family:var(--font-primary);font-size:clamp(16px,1.15vw,19px);line-height:1.76;color:#b8cbe1}
+.fact-value{font-family:var(--font-primary);font-size:clamp(13px,1vw,16px);font-weight:600;letter-spacing:-.01em}
+.archive-card p,.project-card p,.timeline-item p,.visual-work-card p{font-size:clamp(14px,.98vw,16px)}
+.reflection-panel>p{font-size:clamp(16px,1.05vw,18px)}
+footer,footer a{font-family:var(--font-primary);font-size:11px;letter-spacing:.035em}
+@media(max-width:1100px){
+  .hero-full-name{font-size:clamp(50px,6.9vw,88px)}
+  .hero-greeting{font-size:clamp(28px,3.2vw,42px)}
+}
+@media(max-width:760px){
+  .hero h1{font-size:initial}
+  .hero-full-name{font-size:clamp(43px,8.1vw,68px);letter-spacing:-.058em}
+  .hero-greeting{font-size:clamp(26px,5vw,36px)}
+  #about>h2{font-size:clamp(38px,7.5vw,62px)}
+  .section-heading{font-size:clamp(36px,7vw,59px)}
+  .contact-title{font-size:clamp(49px,9vw,82px)}
+  .about-description .prose{font-size:16px}
+  .items-heading h3{font-size:clamp(24px,4.4vw,33px)}
+}
+@media(max-width:480px){
+  .hero-full-name{font-size:clamp(35px,8.4vw,48px);letter-spacing:-.065em}
+  .hero-greeting{font-size:25px}
+  #about>h2{font-size:clamp(34px,8vw,44px)}
+  .section-heading{font-size:clamp(32px,7.4vw,44px)}
+  .hero .tag{font-size:9px}
+  .identity-art b{font-size:105px}
+}
+
 </style></head>
 <body>
 <div id="bar"></div><div id="cd"></div><div id="cr"></div><canvas id="gl"></canvas>
@@ -370,7 +516,7 @@ main > section{padding-block:clamp(110px,8.7vw,150px) clamp(68px,6.3vw,100px)}
   <span class="tag"><i aria-hidden="true"></i> JOSE RIZAL UNIVERSITY <span aria-hidden="true">/</span> BS INFORMATION TECHNOLOGY</span>
   <div class="hero-copy">
     <span class="hero-index-label">COMPUTER PROGRAMMING 1 &nbsp; — &nbsp; E-PORTFOLIO 2026</span>
-    <h1>Hi, I'm<br><em>Justin Lucero.</em></h1>
+    <h1 class="hero-name-heading"><span class="hero-greeting">Hi, I'm</span><span class="hero-full-name">Justin Boie E. Lucero<span class="name-period">.</span></span></h1>
     <p>Exploring programming and digital creativity through PC building, graphic design, 3D modeling, and hands-on technology projects.</p>
     <div class="btns"><a class="btn main mag" href="#works">Explore my work <span aria-hidden="true">↗</span></a><a class="btn mag" href="#about">About me <span aria-hidden="true">↘</span></a></div>
   </div>
@@ -379,7 +525,7 @@ main > section{padding-block:clamp(110px,8.7vw,150px) clamp(68px,6.3vw,100px)}
 </section>
 
 <section id="about">
-  <h2 class="rv"><span>01 — ABOUT ME</span>A student who<br><i>learns by building.</i></h2>
+  <h2 class="rv"><span>01 — ABOUT ME</span>A student who<br><span class="about-heading-accent">learns by building.</span></h2>
   <div class="about rv">
     <div class="photo" id="ph" aria-label="Abstract Justin Lucero monogram graphic">
       <div class="identity-art" aria-hidden="true"><div class="identity-orbit"></div><b>JL</b><small>JUSTIN BOIE E. LUCERO</small></div>
