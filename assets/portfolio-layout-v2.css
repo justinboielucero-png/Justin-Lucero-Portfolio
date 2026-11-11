@@ -113,3 +113,88 @@
   #about .fact-grid{grid-template-columns:1fr}
   #works .gallery-heading-shell .items-heading{align-items:start}
 }
+
+
+/* Reflection glass readability panel — Prelim / Midterm / Finals */
+#reflect .reflection-entry[open] .reflection-entry-content{
+  position:relative;
+  isolation:isolate;
+  z-index:2;
+  max-width:92ch;
+  margin:8px 0 clamp(28px,3.8vw,56px) clamp(75px,10.5vw,158px);
+  padding:clamp(24px,2.9vw,43px);
+  overflow:hidden;
+  border:1px solid rgba(136,191,251,.28);
+  border-radius:20px;
+  background:
+    linear-gradient(135deg,rgba(16,38,69,.88) 0%,rgba(5,19,39,.91) 56%,rgba(5,17,35,.88) 100%);
+  box-shadow:
+    0 22px 64px rgba(0,4,15,.42),
+    inset 0 1px 0 rgba(220,236,255,.10),
+    inset 0 0 36px rgba(41,113,204,.055);
+  -webkit-backdrop-filter:blur(20px) saturate(1.18);
+  backdrop-filter:blur(20px) saturate(1.18);
+}
+#reflect .reflection-entry[open] .reflection-entry-content::before{
+  content:"";
+  position:absolute;
+  left:0;right:0;top:0;
+  height:2px;
+  pointer-events:none;
+  background:linear-gradient(90deg,rgba(76,166,255,.82),rgba(155,208,255,.18) 72%,transparent);
+}
+#reflect .reflection-entry[open] .reflection-entry-meta{
+  position:relative;
+  display:flex;
+  gap:10px 20px;
+  margin:0 0 clamp(18px,2vw,26px);
+  padding-bottom:14px;
+  border-bottom:1px solid rgba(128,184,245,.18);
+  color:#88beff;
+  font-weight:700;
+}
+#reflect .reflection-entry[open] .reflection-entry-meta span:last-child{
+  color:#9ebcda;
+}
+#reflect .reflection-entry[open] .reflection-entry-prose{
+  position:relative;
+  max-width:76ch;
+}
+#reflect .reflection-entry[open] .reflection-entry-prose p{
+  color:#e1ebf8;
+  font-size:clamp(14px,1.04vw,16px);
+  line-height:1.93;
+  letter-spacing:0;
+  text-shadow:0 1px 2px rgba(0,2,10,.16);
+  margin:0 0 1.4em;
+}
+#reflect .reflection-entry[open] .reflection-entry-prose p:last-child{
+  margin-bottom:0;
+}
+@media(max-width:760px){
+  #reflect .reflection-entry[open] .reflection-entry-content{
+    width:100%;
+    max-width:100%;
+    margin:8px 0 28px;
+    padding:clamp(19px,5vw,27px);
+    border-radius:15px;
+    -webkit-backdrop-filter:blur(15px);
+    backdrop-filter:blur(15px);
+  }
+  #reflect .reflection-entry[open] .reflection-entry-meta{
+    align-items:flex-start;
+    flex-wrap:wrap;
+    line-height:1.6;
+  }
+  #reflect .reflection-entry[open] .reflection-entry-prose p{
+    font-size:14px;
+    line-height:1.85;
+  }
+}
+@media(prefers-reduced-transparency:reduce){
+  #reflect .reflection-entry[open] .reflection-entry-content{
+    background:#07172b;
+    -webkit-backdrop-filter:none;
+    backdrop-filter:none;
+  }
+}
