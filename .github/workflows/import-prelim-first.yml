@@ -1,0 +1,30 @@
+name: Import first Prelim images
+on:
+  push:
+    branches: [main]
+    paths: [.github/workflows/import-prelim-first.yml]
+permissions:
+  contents: write
+jobs:
+  import:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+      - name: Download original images
+        env:
+          FILE_ONE: "https://d2jqrm6oza8nb6.cloudfront.net/datasets/8b808e3d-1c9f-4a48-b603-714f2c926c2e.jpg?_jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJrZXlIYXNoIjoiNGRmNWFmZmIzMjZmYWI2MyIsImJ1Y2tldCI6InJ1bndheS1kYXRhc2V0cyIsInN0YWdlIjoicHJvZCIsImV4cCI6MTc5NDQ2NTQwM30.WE-Rmm2TeL-J51gO3U4Ff91B_QUzQjoB4skjKkj901E"
+          FILE_TWO: "https://d2jqrm6oza8nb6.cloudfront.net/datasets/ffae8cef-5b19-4239-aea6-cefd6315864a.jpg?_jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJrZXlIYXNoIjoiZTBkOTVmZDRiYzExYTM0MyIsImJ1Y2tldCI6InJ1bndheS1kYXRhc2V0cyIsInN0YWdlIjoicHJvZCIsImV4cCI6MTc5NDQ3MzQyOH0.XMiZkwz_AHpsTT83ESjAetOuJHE5sX5v7i43uC-YobI"
+        run: |
+          set -euo pipefail
+          mkdir -p assets/prelim
+          curl --fail --silent --show-error --location "$FILE_ONE" -o assets/prelim/flowchart-score-loop.jpg
+          curl --fail --silent --show-error --location "$FILE_TWO" -o assets/prelim/flowchart-arithmetic.jpg
+          echo '85bedf1522afc6d06c306cdb601d1c25a2187e45e588a6f28a4b47c136213591  assets/prelim/flowchart-score-loop.jpg' | sha256sum -c -
+          echo '1500d9c7f54e3c185558ab6c9f1711f3281c273f032d976a518e98fcb75f7e92  assets/prelim/flowchart-arithmetic.jpg' | sha256sum -c -
+      - name: Commit files
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add assets/prelim
+          git commit -m 'Add original Prelim coursework images'
+          git push
