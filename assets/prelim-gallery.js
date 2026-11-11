@@ -1,13 +1,21 @@
-/* Prelim originals gallery - no image transforms or compression */
+/* Prelim and Midterm original media galleries - shared full-resolution viewer */
 (()=>{
  const lib=document.getElementById('prelim-library');
  const open=document.getElementById('prelim-browse');
  const collapse=document.getElementById('prelim-collapse');
+ const midLib=document.getElementById('midterm-library');
+ const midOpen=document.getElementById('midterm-browse');
+ const midCollapse=document.getElementById('midterm-collapse');
  const dialog=document.getElementById('prelim-viewer');
- if(!lib||!open||!collapse||!dialog)return;
- const all=[...lib.querySelectorAll('[data-prelim-file]')];
+ if(!lib||!open||!collapse||!midLib||!midOpen||!midCollapse||!dialog)return;
+ const prelimItems=[...lib.querySelectorAll('[data-prelim-file]')];
+ const midtermItems=[...midLib.querySelectorAll('[data-midterm-file]')];
+ const all=[...prelimItems,...midtermItems];
  const filters=[...lib.querySelectorAll('[data-prelim-filter]')];
  const count=document.getElementById('prelim-count');
+ const midFilters=[...midLib.querySelectorAll('[data-midterm-filter]')];
+ const midCount=document.getElementById('midterm-count');
+ const viewerKicker=dialog.querySelector('.prelim-viewer-kicker');
  const stage=document.getElementById('prelim-viewer-stage');
  const img=document.getElementById('prelim-viewer-image');
  const pdf=document.getElementById('prelim-viewer-pdf');
@@ -25,19 +33,40 @@
  function setArchive(visible){
    lib.hidden=!visible;
    open.setAttribute('aria-expanded',String(visible));
-   if(visible)lib.scrollIntoView({behavior:reduced?'auto':'smooth',block:'start'});
-   else open.focus({preventScroll:true});
+   if(visible){
+     midLib.hidden=true;midOpen.setAttribute('aria-expanded','false');
+     lib.scrollIntoView({behavior:reduced?'auto':'smooth',block:'start'});
+   } else open.focus({preventScroll:true});
+ }
+ function setMidterm(visible){
+   midLib.hidden=!visible;
+   midOpen.setAttribute('aria-expanded',String(visible));
+   if(visible){
+     lib.hidden=true;open.setAttribute('aria-expanded','false');
+     midLib.scrollIntoView({behavior:reduced?'auto':'smooth',block:'start'});
+   } else midOpen.focus({preventScroll:true});
  }
  open.addEventListener('click',()=>setArchive(lib.hidden));
  collapse.addEventListener('click',()=>setArchive(false));
+ midOpen.addEventListener('click',()=>setMidterm(midLib.hidden));
+ midCollapse.addEventListener('click',()=>setMidterm(false));
  if(location.hash==='#prelim-library')setArchive(true);
- function visible(){return all.filter(card=>!card.hidden)}
+ if(location.hash==='#midterm-library')setMidterm(true);
+ function visible(){return all.filter(card=>!card.hidden && !card.closest('.prelim-library').hidden)}
  function filterBy(group){
-   all.forEach(card=>{card.hidden=group!=='all'&&card.dataset.group!==group});
+   prelimItems.forEach(card=>{card.hidden=group!=='all'&&card.dataset.group!==group});
    filters.forEach(button=>{const selected=button.dataset.prelimFilter===group;button.classList.toggle('is-active',selected);button.setAttribute('aria-pressed',String(selected))});
-   count.textContent='Showing '+visible().length+' '+(visible().length===1?'file':'files');
+   const shown=prelimItems.filter(card=>!card.hidden).length;
+   count.textContent='Showing '+shown+' '+(shown===1?'file':'files');
+ }
+ function filterMidterm(group){
+   midtermItems.forEach(card=>{card.hidden=group!=='all'&&card.dataset.group!==group});
+   midFilters.forEach(button=>{const selected=button.dataset.midtermFilter===group;button.classList.toggle('is-active',selected);button.setAttribute('aria-pressed',String(selected))});
+   const shown=midtermItems.filter(card=>!card.hidden).length;
+   midCount.textContent='Showing '+shown+' '+(shown===1?'file':'files');
  }
  filters.forEach(button=>button.addEventListener('click',()=>filterBy(button.dataset.prelimFilter)));
+ midFilters.forEach(button=>button.addEventListener('click',()=>filterMidterm(button.dataset.midtermFilter)));
  function view(card){
    if(!card)return;
    stage.scrollTop=0;stage.scrollLeft=0;stage.classList.remove('is-zoomed');
@@ -47,6 +76,7 @@
    img.removeAttribute('src');pdf.removeAttribute('src');
    if(isPdf){pdf.title=card.dataset.title+' PDF preview';pdf.src=src+'#toolbar=1&navpanes=0'}
    else{img.alt=card.dataset.title;img.src=src}
+   viewerKicker.textContent=card.hasAttribute('data-midterm-file')?'MIDTERM / FILE VIEWER':'PRELIM / FILE VIEWER';
    title.textContent=card.dataset.title;
    filename.textContent=card.dataset.filename;
    filetype.textContent=isPdf?'ORIGINAL PDF':'ORIGINAL IMAGE';
