@@ -32,6 +32,18 @@
     {
       "source": "/assets/portfolio/video-editing-capcut-timeline.jpg",
       "destination": "https://justinboielucero-png.github.io/Justin-Lucero-Portfolio/assets/portfolio/video-editing-capcut-timeline.jpg"
+    },
+    {
+      "source": "/assets/portfolio/pc-build-rgb-tower.jpg",
+      "destination": "https://justinboielucero-png.github.io/Justin-Lucero-Portfolio/assets/portfolio/pc-build-rgb-tower.jpg"
+    },
+    {
+      "source": "/assets/portfolio/pc-build-black-tower.jpg",
+      "destination": "https://justinboielucero-png.github.io/Justin-Lucero-Portfolio/assets/portfolio/pc-build-black-tower.jpg"
+    },
+    {
+      "source": "/assets/portfolio/pc-build-rtx-interior.jpg",
+      "destination": "https://justinboielucero-png.github.io/Justin-Lucero-Portfolio/assets/portfolio/pc-build-rtx-interior.jpg"
     }
   ]
 }

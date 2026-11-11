@@ -1172,7 +1172,7 @@ body::after{
 </style><link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&display=swap">
-<link rel="stylesheet" href="assets/portfolio-layout-v2.css?v=6">
+<link rel="stylesheet" href="assets/portfolio-layout-v2.css?v=7">
 </head>
 <body>
 <div id="bar"></div><div id="cd"></div><div id="cr"></div><canvas id="gl"></canvas>
@@ -1454,10 +1454,21 @@ body::after{
             <div class="visual-category-header"><span class="visual-work-meta">04 / HARDWARE</span><span class="visual-category-count">GALLERY / 04</span></div>
             <h4>PC Building</h4>
             <p>Desktop builds, PC hardware, component setups, and assembly documentation.</p>
-            <div class="visual-empty-media" aria-label="PC Building photos not yet uploaded">
-              <span class="visual-empty-glyph" aria-hidden="true">+</span>
-              <span>Photos to be added</span>
+            <div class="visual-blender-gallery visual-pc-gallery" aria-label="PC building photo documentation">
+              <button type="button" class="blender-image-card" data-pc-file data-src="assets/portfolio/pc-build-rgb-tower.jpg" data-original="assets/portfolio/pc-build-rgb-tower.jpg" data-kind="image" data-title="Blue RGB Gaming PC" data-filename="pc-build-rgb-tower.jpg" aria-label="View Blue RGB Gaming PC original photo">
+                <span class="blender-image-frame"><img src="assets/portfolio/pc-build-rgb-tower.jpg" width="1254" height="2047" loading="lazy" decoding="async" alt="Glass-front desktop PC tower illuminated by bright cyan LED fans"></span>
+                <span class="blender-image-caption"><strong>Blue RGB Gaming PC</strong><span>01 / 03 <span aria-hidden="true">↗</span></span></span>
+              </button>
+              <button type="button" class="blender-image-card" data-pc-file data-src="assets/portfolio/pc-build-black-tower.jpg" data-original="assets/portfolio/pc-build-black-tower.jpg" data-kind="image" data-title="Black Desktop Tower" data-filename="pc-build-black-tower.jpg" aria-label="View Black Desktop Tower original photo">
+                <span class="blender-image-frame"><img src="assets/portfolio/pc-build-black-tower.jpg" width="1383" height="2048" loading="lazy" decoding="async" alt="Unlit black desktop tower with glass side panel and visible cooling fan"></span>
+                <span class="blender-image-caption"><strong>Black Desktop Tower</strong><span>02 / 03 <span aria-hidden="true">↗</span></span></span>
+              </button>
+              <button type="button" class="blender-image-card" data-pc-file data-src="assets/portfolio/pc-build-rtx-interior.jpg" data-original="assets/portfolio/pc-build-rtx-interior.jpg" data-kind="image" data-title="GeForce RTX Interior" data-filename="pc-build-rtx-interior.jpg" aria-label="View GeForce RTX Interior original photo">
+                <span class="blender-image-frame"><img src="assets/portfolio/pc-build-rtx-interior.jpg" width="1212" height="2048" loading="lazy" decoding="async" alt="Inside a PC build with a GeForce RTX graphics card, AMD CPU cooler, and white case fans"></span>
+                <span class="blender-image-caption"><strong>GeForce RTX Interior</strong><span>03 / 03 <span aria-hidden="true">↗</span></span></span>
+              </button>
             </div>
+            <p class="blender-gallery-note">3 original PC building photographs · full-resolution viewing</p>
           </article>
           <article class="visual-work-card visual-category-card visual-category-card--last">
             <div class="visual-category-header"><span class="visual-work-meta">05 / PROJECT DOCUMENTATION</span><span class="visual-category-count">GALLERY / 05</span></div>
@@ -1631,5 +1642,5 @@ const rm=matchMedia('(prefers-reduced-motion:reduce)').matches;let T=0;const col
  </div>
 </div>
 <link rel="stylesheet" href="assets/prelim-gallery.css?v=1">
-<script src="assets/prelim-gallery.js?v=5" defer></script>
+<script src="assets/prelim-gallery.js?v=6" defer></script>
 </body></html>
