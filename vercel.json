@@ -1,0 +1,21 @@
+{
+  "version": 2,
+  "rewrites": [
+    {
+      "source": "/assets/portfolio/blender-neon-character-enhanced.png",
+      "destination": "https://justinboielucero-png.github.io/Justin-Lucero-Portfolio/assets/portfolio/blender-neon-character-enhanced.png"
+    },
+    {
+      "source": "/assets/portfolio/blender-grass-scene-enhanced.png",
+      "destination": "https://justinboielucero-png.github.io/Justin-Lucero-Portfolio/assets/portfolio/blender-grass-scene-enhanced.png"
+    },
+    {
+      "source": "/assets/portfolio/blender-neon-character-original.jpg",
+      "destination": "https://justinboielucero-png.github.io/Justin-Lucero-Portfolio/assets/portfolio/blender-neon-character-original.jpg"
+    },
+    {
+      "source": "/assets/portfolio/blender-grass-scene-original.jpg",
+      "destination": "https://justinboielucero-png.github.io/Justin-Lucero-Portfolio/assets/portfolio/blender-grass-scene-original.jpg"
+    }
+  ]
+}
