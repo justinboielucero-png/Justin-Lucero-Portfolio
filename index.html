@@ -926,7 +926,145 @@ footer{padding-inline:var(--page-gutter);padding-block:30px}
   #reflect #reflection-title{margin-bottom:19px;font-size:clamp(23px,5vw,30px)}
   #reflect .reflection-body p{font-size:15px;line-height:1.8}
 }
-</style></head>
+
+/* Editorial reflection accordions, inspired by the supplied reference, in Justin's navy palette */
+#reflect.reflections-accordion-section{padding-bottom:clamp(90px,8vw,145px)}
+#reflect .section-heading{
+  font-family:'Barlow Condensed',Impact,'Arial Narrow',sans-serif;
+  font-weight:800;
+  font-size:clamp(55px,6.1vw,96px);
+  line-height:.92;
+  letter-spacing:-.02em;
+  color:#f0f5fd;
+  margin:9px 0 20px;
+}
+#reflect .section-heading .section-dot{color:#328ff1;letter-spacing:inherit;font:inherit}
+#reflect .reflection-section-intro{max-width:70ch;margin:0 0 clamp(38px,4vw,58px);font-size:14px;line-height:1.8;color:#9eb2c8}
+#reflect .reflection-accordion{border-top:1px solid rgba(127,160,199,.27)}
+#reflect .reflection-entry{
+  position:relative;
+  margin:0;
+  border-bottom:1px solid rgba(127,160,199,.27);
+  background:transparent;
+  color:#e8f1fc;
+}
+#reflect .reflection-entry-trigger{
+  list-style:none;
+  display:grid;
+  grid-template-columns:minmax(75px,118px) minmax(0,1fr) minmax(160px,210px);
+  gap:clamp(15px,2.7vw,42px);
+  align-items:center;
+  padding:clamp(19px,2.5vw,36px) 3px;
+  min-height:clamp(95px,10vw,156px);
+  cursor:pointer;
+  user-select:none;
+  transition:padding .2s ease, background-color .2s ease;
+}
+#reflect .reflection-entry-trigger::-webkit-details-marker{display:none}
+#reflect .reflection-entry-trigger::marker{content:""}
+#reflect .reflection-entry-trigger:hover{background:linear-gradient(90deg,rgba(25,71,128,.06),rgba(25,71,128,.10),transparent)}
+#reflect .reflection-entry-trigger:focus-visible{outline:2px solid #4ca5ff;outline-offset:-3px;border-radius:4px}
+#reflect .reflection-term-index,
+#reflect .reflection-action-label{
+  font-family:'Manrope',sans-serif;
+  font-size:10px;
+  font-weight:700;
+  line-height:1.4;
+  letter-spacing:.08em;
+  color:#8eaaca;
+  white-space:nowrap;
+}
+#reflect .reflection-term-name{
+  display:block;
+  font-family:'Barlow Condensed',Impact,'Arial Narrow',sans-serif;
+  font-weight:800;
+  font-size:clamp(46px,5.5vw,85px);
+  line-height:1;
+  letter-spacing:-.009em;
+  color:#f1f6fe;
+  transition:color .25s ease,transform .25s ease;
+}
+#reflect .reflection-term-dot{color:#318fff}
+#reflect .reflection-entry-trigger:hover .reflection-term-name,
+#reflect .reflection-entry[open] .reflection-term-name{color:#b8dcff}
+#reflect .reflection-expand-control{display:flex;justify-content:flex-end;align-items:center;gap:25px}
+#reflect .reflection-plus{
+  width:25px;height:25px;position:relative;flex:none;
+  transition:transform .35s cubic-bezier(.2,.8,.2,1);
+}
+#reflect .reflection-plus::before,
+#reflect .reflection-plus::after{
+  content:"";position:absolute;background:#3999ff;border-radius:1px;
+  top:50%;left:50%;transform:translate(-50%,-50%);
+}
+#reflect .reflection-plus::before{width:23px;height:2px}
+#reflect .reflection-plus::after{height:23px;width:2px}
+#reflect .reflection-entry[open] .reflection-plus{transform:rotate(45deg)}
+#reflect .reflection-entry[open] .reflection-entry-trigger{padding-bottom:20px}
+#reflect .reflection-entry-content{
+  margin:0 0 clamp(30px,3.5vw,52px) clamp(91px,10.7vw,160px);
+  padding:22px 0 0;
+  border-top:1px solid rgba(91,142,206,.17);
+  max-width:88ch;
+}
+#reflect .reflection-entry-meta{
+  display:flex;justify-content:space-between;gap:15px;flex-wrap:wrap;
+  font-family:'Manrope',sans-serif;font-size:10px;letter-spacing:.12em;
+  color:#68a7e8;font-weight:700;margin-bottom:22px;
+}
+#reflect .reflection-entry-prose p{
+  font-family:'Manrope',sans-serif;
+  font-size:clamp(14px,1.03vw,16px);
+  line-height:1.9;
+  font-weight:400;
+  letter-spacing:0;
+  color:#c2d2e4;
+  margin:0 0 1.3em;
+}
+#reflect .reflection-entry-prose p:last-child{margin-bottom:0}
+#reflect .reflection-section-footer{
+  margin-top:22px;
+  color:#8da3bc;
+  font:500 11px/1.7 'Manrope',sans-serif;
+  letter-spacing:.03em;
+}
+@media(prefers-reduced-motion:no-preference){
+  #reflect .reflection-entry[open] .reflection-entry-content{
+    animation:reflectionExpand .34s cubic-bezier(.22,.61,.36,1) both;
+  }
+  @keyframes reflectionExpand{
+    from{opacity:0;transform:translateY(-8px)}
+    to{opacity:1;transform:translateY(0)}
+  }
+}
+@media(max-width:760px){
+  #reflect .section-heading{font-size:clamp(53px,11vw,76px)}
+  #reflect .reflection-entry-trigger{
+    grid-template-columns:minmax(48px,64px) minmax(0,1fr) 30px;
+    gap:12px;
+    min-height:104px;
+    padding:20px 1px;
+  }
+  #reflect .reflection-term-name{font-size:clamp(44px,9vw,68px)}
+  #reflect .reflection-term-index{font-size:9px}
+  #reflect .reflection-action-label{display:none}
+  #reflect .reflection-plus{width:20px;height:20px}
+  #reflect .reflection-plus::before{width:20px}
+  #reflect .reflection-plus::after{height:20px}
+  #reflect .reflection-entry-content{margin-left:0;margin-bottom:25px;padding-top:21px}
+  #reflect .reflection-entry-meta{font-size:9px}
+  #reflect .reflection-entry-prose p{font-size:14px;line-height:1.85}
+}
+@media(max-width:420px){
+  #reflect .reflection-entry-trigger{grid-template-columns:47px minmax(0,1fr) 24px;gap:9px}
+  #reflect .reflection-term-name{font-size:clamp(40px,10vw,49px)}
+  #reflect .reflection-term-index{font-size:8px}
+}
+
+</style><link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&display=swap">
+</head>
 <body>
 <div id="bar"></div><div id="cd"></div><div id="cr"></div><canvas id="gl"></canvas>
 <nav aria-label="Portfolio navigation"><a href="#home" class="on">Welcome</a><a href="#about">About</a><a href="#works">Academics</a><a href="#reflect">Reflections</a><a href="#contact">Contact</a></nav>
@@ -999,22 +1137,59 @@ footer{padding-inline:var(--page-gutter);padding-block:30px}
 
 
 
-<section id="reflect" class="section content-section" aria-labelledby="reflections-heading">
-  <div class="mobile-label">03 — REFLECTIONS</div>
-  <h2 class="section-heading rv" id="reflections-heading">Learning reflections<span class="section-dot">.</span></h2>
-  <p class="section-description">My reflections on the lessons, challenges, and progress I experienced throughout Computer Programming 1.</p>
-  <div class="term-tabs" role="tablist" aria-label="Term reflections">
-    <button type="button" class="term-tab active" role="tab" id="tab-prelim" aria-selected="true" aria-controls="term-panel" tabindex="0" data-term="prelim">01 / PRELIM</button>
-    <button type="button" class="term-tab" role="tab" id="tab-midterm" aria-selected="false" aria-controls="term-panel" tabindex="-1" data-term="midterm">02 / MIDTERM</button>
-    <button type="button" class="term-tab" role="tab" id="tab-final" aria-selected="false" aria-controls="term-panel" tabindex="-1" data-term="final">03 / FINAL</button>
+
+<section id="reflect" class="section content-section reflections-accordion-section" aria-labelledby="reflections-heading">
+  <div class="mobile-label">03 — TERM REFLECTIONS</div>
+  <h2 class="section-heading rv" id="reflections-heading">REFLECTIONS<span class="section-dot">.</span></h2>
+  <p class="section-description reflection-section-intro">Three terms. Three stages of learning in Computer Programming 1. Select a term to read my experience.</p>
+  <div class="reflection-accordion" aria-label="Prelim, Midterm, and Final reflections">
+    <details class="reflection-entry" name="justin-reflection-terms" id="reflection-prelim">
+      <summary class="reflection-entry-trigger">
+        <span class="reflection-term-index">01 / TERM</span>
+        <span class="reflection-term-name">PRELIM<span class="reflection-term-dot">.</span></span>
+        <span class="reflection-expand-control"><span class="reflection-action-label">VIEW REFLECTION</span><span class="reflection-plus" aria-hidden="true"></span></span>
+      </summary>
+      <div class="reflection-entry-content">
+        <div class="reflection-entry-meta"><span>THE FOUNDATIONS</span><span>COMPUTER PROGRAMMING 1</span></div>
+        <div class="reflection-entry-prose">
+          <p>During the preliminary term in Computer Programming 1, I started developing my understanding of programming fundamentals and how to solve problems using logical steps. I learned about algorithms and flowcharts, which helped me understand how to organize instructions before writing an actual program. I also became familiar with the basic structure of Java, variables, data types, and input and output statements. These lessons taught me that programming is not just about writing code but also about understanding the problem and planning the correct solution.</p>
+          <p>As we moved on to more advanced topics, I learned about conditional statements and how they allow a program to make decisions depending on certain conditions. Through different activities and programming exercises, I practiced using conditions to solve problems involving grades, passwords, calculations, and other situations. At first, I sometimes struggled with understanding the correct syntax and determining which conditions to use. However, by studying examples and practicing the activities, I gradually became more comfortable with writing and understanding code.</p>
+          <p>Overall, the preliminary term helped me establish a strong foundation in programming. I realized that even simple programs require logical thinking, patience, and attention to detail. I also learned that making mistakes is part of the learning process because debugging helps me identify what went wrong and understand how to improve my code. This term encouraged me to practice more and become more confident in solving programming problems independently.</p>
+        </div>
+      </div>
+    </details>
+    <details class="reflection-entry" name="justin-reflection-terms" id="reflection-midterm">
+      <summary class="reflection-entry-trigger">
+        <span class="reflection-term-index">02 / TERM</span>
+        <span class="reflection-term-name">MIDTERM<span class="reflection-term-dot">.</span></span>
+        <span class="reflection-expand-control"><span class="reflection-action-label">VIEW REFLECTION</span><span class="reflection-plus" aria-hidden="true"></span></span>
+      </summary>
+      <div class="reflection-entry-content">
+        <div class="reflection-entry-meta"><span>LEARNING THROUGH PRACTICE</span><span>COMPUTER PROGRAMMING 1</span></div>
+        <div class="reflection-entry-prose">
+          <p>During the midterm term in Computer Programming 1, I focused on using the programming concepts I had previously learned to solve more complex exercises and problems. I started to understand better how the different parts of a program work together, particularly when receiving user input, processing data, and displaying the expected output. I also learned that writing a program is not simply about making it run but ensuring that it performs the correct operations and produces accurate results.</p>
+          <p>One of the challenges I encountered was converting problem statements into actual Java programs. There were times when I understood what the problem required but had difficulty figuring out how to start writing the code. To overcome this, I learned to break down the problem into smaller steps and identify the variables and operations needed before coding. I also practiced tracing my programs line by line to understand how each instruction affected the final output and to identify possible errors.</p>
+          <p>Throughout this term, I realized that programming requires patience, practice, and critical thinking. Whenever my code did not produce the expected result, I learned to review my logic and check my mistakes instead of immediately giving up or rewriting everything. I also understood that being able to follow a programming example does not always mean I can solve the same problem independently. This experience taught me to focus more on understanding the logic behind every program, which helped me become more careful and confident in approaching programming activities.</p>
+        </div>
+      </div>
+    </details>
+    <details class="reflection-entry" name="justin-reflection-terms" id="reflection-final">
+      <summary class="reflection-entry-trigger">
+        <span class="reflection-term-index">03 / TERM</span>
+        <span class="reflection-term-name">FINALS<span class="reflection-term-dot">.</span></span>
+        <span class="reflection-expand-control"><span class="reflection-action-label">VIEW REFLECTION</span><span class="reflection-plus" aria-hidden="true"></span></span>
+      </summary>
+      <div class="reflection-entry-content">
+        <div class="reflection-entry-meta"><span>GROWTH &amp; REFLECTION</span><span>COMPUTER PROGRAMMING 1</span></div>
+        <div class="reflection-entry-prose">
+          <p>During the final term in Computer Programming 1, I focused on applying the programming knowledge and skills I had developed from the previous lessons to our remaining activities. I became more aware of the steps involved in solving programming problems, starting from understanding the instructions and planning the solution to writing the code, testing its output, and fixing any errors. Having a clear process helped me become more organized and systematic when working on programming tasks.</p>
+          <p>One important thing I learned during this term was the importance of checking and improving my own code. I realized that just because a program runs successfully does not necessarily mean that the solution is completely correct. I learned to review the output and compare it with the given instructions to make sure my program worked as expected. Whenever I encountered difficulties, I tried to revisit the basic programming concepts and use what I had learned to understand and correct my mistakes.</p>
+          <p>Working on my e-portfolio also gave me the chance to look back on the activities and exercises I had completed throughout the course. It allowed me to see the progress I had made, recognize the concepts I had gradually understood, and identify the areas where I still needed improvement. By the end of the final term, I realized that learning programming takes time, continuous practice, and patience. I hope to further improve my Java programming skills and become more confident in solving problems independently while making sure that I fully understand the code I write.</p>
+        </div>
+      </div>
+    </details>
   </div>
-  <article class="reflection-panel" id="term-panel" role="tabpanel" aria-labelledby="tab-prelim" aria-live="polite" tabindex="0">
-    <div class="reflection-header"><span id="reflection-counter">TERM 01 — 03</span><span class="reflection-mark" aria-hidden="true">✳</span></div>
-    <h3 id="reflection-title">Prelim Reflection</h3>
-    <div id="reflection-description" class="reflection-body"><p>During the preliminary term in Computer Programming 1, I started developing my understanding of programming fundamentals and how to solve problems using logical steps. I learned about algorithms and flowcharts, which helped me understand how to organize instructions before writing an actual program. I also became familiar with the basic structure of Java, variables, data types, and input and output statements. These lessons taught me that programming is not just about writing code but also about understanding the problem and planning the correct solution.</p>
-<p>As we moved on to more advanced topics, I learned about conditional statements and how they allow a program to make decisions depending on certain conditions. Through different activities and programming exercises, I practiced using conditions to solve problems involving grades, passwords, calculations, and other situations. At first, I sometimes struggled with understanding the correct syntax and determining which conditions to use. However, by studying examples and practicing the activities, I gradually became more comfortable with writing and understanding code.</p>
-<p>Overall, the preliminary term helped me establish a strong foundation in programming. I realized that even simple programs require logical thinking, patience, and attention to detail. I also learned that making mistakes is part of the learning process because debugging helps me identify what went wrong and understand how to improve my code. This term encouraged me to practice more and become more confident in solving programming problems independently.</p></div>
-  </article>
+  <p class="reflection-section-footer">A record of progress, patience, and learning through programming.</p>
 </section>
 
 <section id="contact" class="section content-section contact-section" aria-labelledby="contact-heading"><div class="mobile-label">04 — CONTACT</div><div class="contact-kicker">WHAT'S NEXT?</div><h2 class="contact-title rv" id="contact-heading">Let's keep <em>building.</em></h2><p>This portfolio is a living record of my progress. Every activity, project, and reflection is another step toward the developer I want to become.</p><a class="contact-link" href="https://github.com/justinboielucero-png" target="_blank" rel="noopener noreferrer">View my GitHub <span>↗</span></a></section>
