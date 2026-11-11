@@ -1172,7 +1172,7 @@ body::after{
 </style><link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&display=swap">
-<link rel="stylesheet" href="assets/portfolio-layout-v2.css?v=7">
+<link rel="stylesheet" href="assets/portfolio-layout-v2.css?v=8">
 </head>
 <body>
 <div id="bar"></div><div id="cd"></div><div id="cr"></div><canvas id="gl"></canvas>
@@ -1474,10 +1474,17 @@ body::after{
             <div class="visual-category-header"><span class="visual-work-meta">05 / PROJECT DOCUMENTATION</span><span class="visual-category-count">GALLERY / 05</span></div>
             <h4>Projects</h4>
             <p>Project photos, prototypes, development work, and documentation.</p>
-            <div class="visual-empty-media" aria-label="Projects photos not yet uploaded">
-              <span class="visual-empty-glyph" aria-hidden="true">+</span>
-              <span>Photos to be added</span>
+            <div class="visual-blender-gallery visual-project-gallery" aria-label="Project recognition and prototype documentation">
+              <button type="button" class="blender-image-card" data-project-file data-src="assets/portfolio/project-research-recognition.jpg" data-original="assets/portfolio/project-research-recognition.jpg" data-kind="image" data-title="Smart-home automation research presentation, certificate, and trophy" data-filename="project-research-recognition.jpg" aria-label="View Research Recognition original photo">
+                <span class="blender-image-frame"><img src="assets/portfolio/project-research-recognition.jpg" width="1378" height="2046" loading="lazy" decoding="async" alt="Justin at a research event holding a participation certificate for solar-powered smart-home automation and a trophy"></span>
+                <span class="blender-image-caption"><strong>Research Recognition</strong><span>01 / 02 <span aria-hidden="true">↗</span></span></span>
+              </button>
+              <button type="button" class="blender-image-card" data-project-file data-src="assets/portfolio/project-electronics-prototype.jpg" data-original="assets/portfolio/project-electronics-prototype.jpg" data-kind="image" data-title="Hands-on assembly, electronics, and testing documentation" data-filename="project-electronics-prototype.jpg" aria-label="View Electronics Prototype original photo">
+                <span class="blender-image-frame"><img src="assets/portfolio/project-electronics-prototype.jpg" width="1474" height="2047" loading="lazy" decoding="async" alt="Justin wearing a face shield beside an electronics prototype with visible wiring, display, and controller"></span>
+                <span class="blender-image-caption"><strong>Electronics Prototype</strong><span>02 / 02 <span aria-hidden="true">↗</span></span></span>
+              </button>
             </div>
+            <p class="blender-gallery-note">2 project photographs · original-resolution viewing</p>
           </article>
         </div>
       </section>
@@ -1642,5 +1649,5 @@ const rm=matchMedia('(prefers-reduced-motion:reduce)').matches;let T=0;const col
  </div>
 </div>
 <link rel="stylesheet" href="assets/prelim-gallery.css?v=1">
-<script src="assets/prelim-gallery.js?v=6" defer></script>
+<script src="assets/prelim-gallery.js?v=7" defer></script>
 </body></html>

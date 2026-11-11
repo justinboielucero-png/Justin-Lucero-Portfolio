@@ -371,3 +371,18 @@
   #works .visual-pc-gallery{grid-template-columns:1fr}
   #works .visual-pc-gallery .blender-image-frame{aspect-ratio:4/5}
 }
+
+/* Project documentation photo gallery */
+#works .visual-work-categories .visual-category-card:nth-child(4),
+#works .visual-work-categories .visual-category-card:nth-child(5){grid-column:1/-1}
+#works .visual-project-gallery{grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(14px,2vw,24px);padding-top:12px}
+#works .visual-project-gallery .blender-image-frame{
+  height:clamp(260px,31vw,450px);aspect-ratio:auto;
+  background:radial-gradient(ellipse at center,rgba(18,42,69,.4),rgba(3,13,29,.97));
+}
+#works .visual-project-gallery .blender-image-frame img{object-fit:contain;object-position:center}
+#works .visual-project-gallery .blender-image-caption{min-height:56px}
+@media(max-width:600px){
+  #works .visual-project-gallery{grid-template-columns:1fr}
+  #works .visual-project-gallery .blender-image-frame{height:clamp(300px,95vw,520px)}
+}

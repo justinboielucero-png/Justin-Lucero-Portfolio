@@ -44,6 +44,14 @@
     {
       "source": "/assets/portfolio/pc-build-rtx-interior.jpg",
       "destination": "https://justinboielucero-png.github.io/Justin-Lucero-Portfolio/assets/portfolio/pc-build-rtx-interior.jpg"
+    },
+    {
+      "source": "/assets/portfolio/project-research-recognition.jpg",
+      "destination": "https://justinboielucero-png.github.io/Justin-Lucero-Portfolio/assets/portfolio/project-research-recognition.jpg"
+    },
+    {
+      "source": "/assets/portfolio/project-electronics-prototype.jpg",
+      "destination": "https://justinboielucero-png.github.io/Justin-Lucero-Portfolio/assets/portfolio/project-electronics-prototype.jpg"
     }
   ]
 }
