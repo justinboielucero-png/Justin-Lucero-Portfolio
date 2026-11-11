@@ -1,0 +1,49 @@
+name: Import Pubmats JRU original photos
+on:
+  push:
+    branches: [main]
+    paths: [.github/workflows/import-pubmats-jru.yml]
+permissions:
+  contents: write
+jobs:
+  import-original-pubmats:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+      - name: Fetch and checksum verify original JRU media
+        env:
+          PHOTO_SOURCE: "https://d2jqrm6oza8nb6.cloudfront.net/datasets/d6a6813a-77c6-42e0-a6a2-ac79c8a38e2b.jpg?_jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJrZXlIYXNoIjoiNDM4MDYyNDRlNzk5ZjY2MCIsImJ1Y2tldCI6InJ1bndheS1kYXRhc2V0cyIsInN0YWdlIjoicHJvZCIsImV4cCI6MTc5NDQ4NDAzNn0.B_VG8OZEpT7FbmKyKNTkTs-FuBUyRnu-mlRih1srSbw"
+        run: |
+          set -euo pipefail
+          curl --fail --location --silent --show-error --retry 3 "$PHOTO_SOURCE" -o /tmp/pubmats-transfer.jpg
+          echo '1b1d0589e57069d22af7fef971fa7c1b78a179031051bcc1457752566c5fc069  /tmp/pubmats-transfer.jpg' | sha256sum -c -
+          python - <<'PY'
+          from pathlib import Path
+          import hashlib,zipfile,io
+          blob=Path('/tmp/pubmats-transfer.jpg').read_bytes()
+          marker=b'\nJUSTIN-PUBMATS-2026-ARCHIVE\n'
+          assert blob.count(marker)==1, 'Missing or duplicated archive marker'
+          expected={"pubmat-aws-jru-design.jpg":"81f1a0d418ab8203fed095b0fee4c6260b0df14901de93f88a0bbb98b91fce49","pubmat-cloud-grand-prix.png":"33f40d77b15e2fae872dfe4e05f2e5ec258417a82fba2ba3df7d54c2b62657a8"}
+          dst=Path('assets/portfolio')
+          dst.mkdir(exist_ok=True,parents=True)
+          with zipfile.ZipFile(io.BytesIO(blob.split(marker,1)[1])) as z:
+              assert set(z.namelist())==set(expected), 'Unexpected archive entries'
+              for name,sha in expected.items():
+                  b=z.read(name)
+                  assert hashlib.sha256(b).hexdigest()==sha, name+' corrupted'
+                  if name.endswith('.jpg'): assert b.startswith(b'\xff\xd8')
+                  if name.endswith('.png'): assert b.startswith(b'\x89PNG\r\n\x1a\n')
+                  (dst/name).write_bytes(b)
+                  print(name,len(b), 'SHA verified')
+          PY
+      - name: Commit original publication photos
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add assets/portfolio/pubmat-aws-jru-design.jpg assets/portfolio/pubmat-cloud-grand-prix.png
+          if ! git diff --cached --quiet; then
+            git commit -m 'Add original JRU pubmat and Cloud Grand Prix photos'
+            git pull --rebase origin main
+            git push origin HEAD:main
+          fi
