@@ -10,5 +10,27 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
-      - name: Prepare image folder
-        run: mkdir -p assets/portfolio
+      - name: Transfer unmodified pictures
+        env:
+          IMAGE_1: "https://d2jqrm6oza8nb6.cloudfront.net/datasets/fe58f26f-d704-4511-b43d-a90da7c62fbb.jpg?_jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJrZXlIYXNoIjoiMjQzZDZjYzMwMjZkMjhmMSIsImJ1Y2tldCI6InJ1bndheS1kYXRhc2V0cyIsInN0YWdlIjoicHJvZCIsImV4cCI6MTc5NDUzNjUxNX0.qB1TqwX4QBS1EIpD2SO1lZChCDF638ygogbC_x2xFMk"
+          IMAGE_2: "https://d2jqrm6oza8nb6.cloudfront.net/datasets/10e4755b-f499-4f6e-93fa-6e1cd542a204.jpg?_jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJrZXlIYXNoIjoiNGY5YmU5NTIzOTJiOWNmYiIsImJ1Y2tldCI6InJ1bndheS1kYXRhc2V0cyIsImV4cCI6MTc5NDQ4ODI3NH0.jjDiyNkxT-vpneox8ybU9QpyNykkAqBmN02cD5IZyQM"
+          IMAGE_3: "https://d2jqrm6oza8nb6.cloudfront.net/datasets/018f516f-b6cc-4b61-84f4-0fcaf3b075f2.jpg?_jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJrZXlIYXNoIjoiYmExNjYxZDEwZmFiMTBiMSIsImJ1Y2tldCI6InJ1bndheS1kYXRhc2V0cyIsImV4cCI6MTc5NDQ5MzAwOX0.4mNe4SWd_w2Uha1j_SBJc8guIRk5IEMUsG26UtyuYt4"
+        run: |
+          set -euo pipefail
+          mkdir -p assets/portfolio
+          curl -fLsS --retry 3 "$IMAGE_1" -o assets/portfolio/pc-build-rgb-tower.jpg
+          echo '861ebbe550748adc68865e4a94b5c50f293031bc555ca4bdf4ee164918dc1ea2  assets/portfolio/pc-build-rgb-tower.jpg' | sha256sum -c -
+          curl -fLsS --retry 3 "$IMAGE_2" -o assets/portfolio/pc-build-black-tower.jpg
+          echo '29f404aaa7f85339551871231e5bd6a0c75ca2501e895a20db968b071123cd6d  assets/portfolio/pc-build-black-tower.jpg' | sha256sum -c -
+          curl -fLsS --retry 3 "$IMAGE_3" -o assets/portfolio/pc-build-rtx-interior.jpg
+          echo 'a31285503512a836475e4c8487f9d5df5a486d15b55bcba4aac2c5492961b980  assets/portfolio/pc-build-rtx-interior.jpg' | sha256sum -c -
+      - name: Commit verified images
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add assets/portfolio/pc-build-*.jpg
+          if ! git diff --cached --quiet; then
+            git commit -m 'Add three original PC Building photos'
+            git pull --rebase origin main
+            git push origin HEAD:main
+          fi
