@@ -1,0 +1,33 @@
+name: Import video editing originals
+on:
+  push:
+    branches: [main]
+    paths: ['.github/workflows/import-video-editing.yml']
+permissions:
+  contents: write
+jobs:
+  upload:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+      - name: Copy and verify the unmodified JPGs
+        env:
+          FIRST_IMAGE: "https://d2jqrm6oza8nb6.cloudfront.net/datasets/42d29d08-5224-4bae-94f8-58c73dbc1da3.jpg?_jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJrZXlIYXNoIjoiNDA3Yjk2ZWFjODdlZDEwNyIsImJ1Y2tldCI6InJ1bndheS1kYXRhc2V0cyIsInN0YWdlIjoicHJvZCIsImV4cCI6MTc5NDU1NDk4Nn0.09C2Fc4RO8Git4ADRmru7QGjO4rb77-ImKfGrnSUP8Y"
+          SECOND_IMAGE: "https://d2jqrm6oza8nb6.cloudfront.net/datasets/07dfbcd1-e44f-4953-8953-2ac3a7916bdf.jpg?_jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJrZXlIYXNoIjoiZjAzNzJiZDI3ZTU2NzY3NiIsImJ1Y2tldCI6InJ1bndheS1kYXRhc2V0cyIsImV4cCI6MTc5NDU0NzUzOH0.PXvyqgF1LLTQYmdmd-9sNGNCFNRceMvBuUBqeui6jWQ"
+        run: |
+          set -euo pipefail
+          mkdir -p assets/portfolio
+          curl -fsSL --retry 3 "$FIRST_IMAGE" -o assets/portfolio/video-editing-workstation.jpg
+          curl -fsSL --retry 3 "$SECOND_IMAGE" -o assets/portfolio/video-editing-capcut-timeline.jpg
+          echo "4030588e49e2d678e677fa79159ac8c78dd63bcddf157d8d8a68a4c2f1c07819  assets/portfolio/video-editing-workstation.jpg" | sha256sum -c -
+          echo "f25652242e6575d3fa75ab13dbd2f12a3764ddac990c99bc8423ff167a0d262e  assets/portfolio/video-editing-capcut-timeline.jpg" | sha256sum -c -
+      - name: Publish video-editing photographs
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add assets/portfolio/video-editing-workstation.jpg assets/portfolio/video-editing-capcut-timeline.jpg
+          if ! git diff --cached --quiet; then
+            git commit -m 'Add two original video editing screenshots'
+            git pull --rebase origin main
+            git push origin HEAD:main
+          fi
