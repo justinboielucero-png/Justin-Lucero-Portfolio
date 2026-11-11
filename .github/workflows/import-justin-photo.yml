@@ -1,0 +1,36 @@
+name: Import Justin's original profile portrait
+on:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/import-justin-photo.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  import-photo:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          persist-credentials: true
+      - name: Retrieve original portrait unchanged
+        env:
+          PHOTO_URL: "https://d2jqrm6oza8nb6.cloudfront.net/datasets/43411d93-942f-45bf-b6a2-46001c69819e.jpg?_jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJrZXlIYXNoIjoiODRmNWE4MzIzZTg3YjAyNyIsImJ1Y2tldCI6InJ1bndheS1kYXRhc2V0cyIsInN0YWdlIjoicHJvZCIsImV4cCI6MTc5NDQ1ODI5MH0.-mJzO_6Y-re_5ffhHi4Wdjj1Mz9JTjNkV_r_nycps9g"
+        run: |
+          set -euo pipefail
+          mkdir -p assets/portfolio
+          curl --fail --location --silent --show-error --retry 3 "$PHOTO_URL" --output assets/portfolio/justin-profile.jpg
+          printf '%s  %s\n' "1e51d7b91d21bca614d689012cbed3aa3ab8dde33ebcbd2e209eaecb731d2b4a" "assets/portfolio/justin-profile.jpg" | sha256sum -c -
+      - name: Commit profile image to site
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add assets/portfolio/justin-profile.jpg
+          if ! git diff --cached --quiet; then
+            git commit -m "Add Justin's original profile portrait to About Me"
+            git push origin HEAD:main
+          fi
