@@ -386,3 +386,25 @@
   #works .visual-project-gallery{grid-template-columns:1fr}
   #works .visual-project-gallery .blender-image-frame{height:clamp(300px,95vw,520px)}
 }
+
+
+/* Projects – video project presentation */
+#works .project-video-feature{
+  grid-column:1/-1; width:100%;margin-top:24px;padding:clamp(16px,2vw,26px);
+  background:rgba(5,20,39,.88);border:1px solid rgba(100,173,255,.32);
+  border-radius:14px;color:#edf5ff;
+}
+#works .project-video-head{
+  display:flex;flex-wrap:wrap;align-items:baseline;gap:8px 18px;margin-bottom:16px;
+}
+#works .project-video-head strong{font-size:clamp(18px,2vw,24px);font-weight:700}
+#works .project-video-eyebrow{font-size:10px;letter-spacing:.13em;color:#79bbff}
+#works .project-video-head>span:last-child{color:#a6bdce;font-size:12px}
+#works .project-video-player{
+  display:block;width:100%;height:auto;aspect-ratio:16/9;background:#030d17;
+  border:1px solid rgba(115,174,235,.18);border-radius:10px;
+}
+#works .project-video-download{
+  display:inline-block;margin-top:14px;color:#9dccff;font-size:13px;text-underline-offset:4px;
+}
+#works .project-video-download:focus-visible{outline:2px solid #9dccff;outline-offset:5px}
