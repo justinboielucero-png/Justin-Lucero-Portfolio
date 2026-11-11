@@ -10,24 +10,34 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
-      - name: Copy and verify the unmodified JPGs
+      - name: Verify and restore two JPGs
         env:
-          FIRST_IMAGE: "https://d2jqrm6oza8nb6.cloudfront.net/datasets/42d29d08-5224-4bae-94f8-58c73dbc1da3.jpg?_jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJrZXlIYXNoIjoiNDA3Yjk2ZWFjODdlZDEwNyIsImJ1Y2tldCI6InJ1bndheS1kYXRhc2V0cyIsInN0YWdlIjoicHJvZCIsImV4cCI6MTc5NDU1NDk4Nn0.09C2Fc4RO8Git4ADRmru7QGjO4rb77-ImKfGrnSUP8Y"
-          SECOND_IMAGE: "https://d2jqrm6oza8nb6.cloudfront.net/datasets/07dfbcd1-e44f-4953-8953-2ac3a7916bdf.jpg?_jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJrZXlIYXNoIjoiZjAzNzJiZDI3ZTU2NzY3NiIsImJ1Y2tldCI6InJ1bndheS1kYXRhc2V0cyIsImV4cCI6MTc5NDU0NzUzOH0.PXvyqgF1LLTQYmdmd-9sNGNCFNRceMvBuUBqeui6jWQ"
+          ASSET_SOURCE: "https://d2jqrm6oza8nb6.cloudfront.net/datasets/b1a50479-ce6d-4304-aeee-09c4d008cf92.jpg?_jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJrZXlIYXNoIjoiZGM3ODhiNzljOTAzMmJhMiIsImJ1Y2tldCI6InJ1bndheS1kYXRhc2V0cyIsInN0YWdlIjoicHJvZCIsImV4cCI6MTc5NDU0NTE0NX0.VlKyxyGQXIR4uIhj4z7ryCfRPFlIPMK4hAVvi6LcNHg"
         run: |
           set -euo pipefail
-          mkdir -p assets/portfolio
-          curl -fsSL --retry 3 "$FIRST_IMAGE" -o assets/portfolio/video-editing-workstation.jpg
-          curl -fsSL --retry 3 "$SECOND_IMAGE" -o assets/portfolio/video-editing-capcut-timeline.jpg
-          echo "4030588e49e2d678e677fa79159ac8c78dd63bcddf157d8d8a68a4c2f1c07819  assets/portfolio/video-editing-workstation.jpg" | sha256sum -c -
-          echo "f25652242e6575d3fa75ab13dbd2f12a3764ddac990c99bc8423ff167a0d262e  assets/portfolio/video-editing-capcut-timeline.jpg" | sha256sum -c -
-      - name: Publish video-editing photographs
+          curl -fsSL --retry 3 "$ASSET_SOURCE" -o /tmp/transfer.jpg
+          echo '85733f9a9d8a605019da3370f6d9c9ff61162905be5a5a36ff6ad6767472b8bb  /tmp/transfer.jpg' | sha256sum -c -
+          python - <<'PY'
+          from pathlib import Path
+          from io import BytesIO
+          from zipfile import ZipFile
+          from hashlib import sha256
+          data=Path('/tmp/transfer.jpg').read_bytes()
+          marker=b'\nJUSTIN-VIDEO-EDITING-ARCHIVE-2026\n'
+          assert data.count(marker)==1
+          expected={'video-editing-workstation.jpg':'4030588e49e2d678e677fa79159ac8c78dd63bcddf157d8d8a68a4c2f1c07819','video-editing-capcut-timeline.jpg':'f25652242e6575d3fa75ab13dbd2f12a3764ddac990c99bc8423ff167a0d262e'}
+          out=Path('assets/portfolio');out.mkdir(parents=True,exist_ok=True)
+          with ZipFile(BytesIO(data.split(marker,1)[1])) as z:
+            assert set(z.namelist())==set(expected)
+            for name,h in expected.items():
+              payload=z.read(name)
+              assert sha256(payload).hexdigest()==h
+              (out/name).write_bytes(payload)
+              print(name,len(payload))
+          PY
+      - name: Commit original screenshots
         run: |
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add assets/portfolio/video-editing-workstation.jpg assets/portfolio/video-editing-capcut-timeline.jpg
-          if ! git diff --cached --quiet; then
-            git commit -m 'Add two original video editing screenshots'
-            git pull --rebase origin main
-            git push origin HEAD:main
-          fi
+          git add assets/portfolio/video-editing-*.jpg
+          if ! git diff --cached --quiet; then git commit -m 'Add two original video editing screenshots'; git pull --rebase origin main; git push origin HEAD:main; fi
