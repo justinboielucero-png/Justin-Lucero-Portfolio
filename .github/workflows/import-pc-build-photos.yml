@@ -18,3 +18,13 @@ jobs:
           echo '01dcd8956dc65fa0551633cea179b69ab6640d1d166627dec3bd4102e6db8988  /tmp/pc-build-transfer.jpg' | sha256sum -c -
       - name: Verify the extracted image originals
         run: python scripts/verify_pc_images.py
+      - name: Publish the three photos to the repository
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add assets/portfolio/pc-build-*.jpg
+          if ! git diff --cached --quiet; then
+            git commit -m 'Add three original PC building photographs'
+            git pull --rebase origin main
+            git push origin HEAD:main
+          fi
