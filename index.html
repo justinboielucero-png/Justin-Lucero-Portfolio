@@ -1172,7 +1172,7 @@ body::after{
 </style><link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&display=swap">
-<link rel="stylesheet" href="assets/portfolio-layout-v2.css?v=4">
+<link rel="stylesheet" href="assets/portfolio-layout-v2.css?v=5">
 </head>
 <body>
 <div id="bar"></div><div id="cd"></div><div id="cr"></div><canvas id="gl"></canvas>
@@ -1422,10 +1422,17 @@ body::after{
             <div class="visual-category-header"><span class="visual-work-meta">02 / PUBLICATION DESIGN</span><span class="visual-category-count">GALLERY / 02</span></div>
             <h4>Pubmats / JRU</h4>
             <p>Publication materials and visual designs created for JRU-related activities.</p>
-            <div class="visual-empty-media" aria-label="Pubmats / JRU photos not yet uploaded">
-              <span class="visual-empty-glyph" aria-hidden="true">+</span>
-              <span>Photos to be added</span>
+            <div class="visual-blender-gallery visual-pubmat-gallery" aria-label="JRU publication designs and event graphics">
+              <button type="button" class="blender-image-card" data-pubmat-file data-src="assets/portfolio/pubmat-aws-jru-design.jpg" data-original="assets/portfolio/pubmat-aws-jru-design.jpg" data-kind="image" data-title="AWS Student Builder Group — speaker spotlight" data-filename="pubmat-aws-jru-design.jpg" aria-label="View AWS Student Builder Group — speaker spotlight at original resolution">
+                <span class="blender-image-frame"><img src="assets/portfolio/pubmat-aws-jru-design.jpg" width="2048" height="1146" loading="lazy" decoding="async" alt="Photo-editing workspace showing an AWS Student Builder Group JRU Chapter publication design featuring Rizelle Bautista"></span>
+                <span class="blender-image-caption"><strong>AWS JRU Publication</strong><span>01 / 02 <span aria-hidden="true">↗</span></span></span>
+              </button>
+              <button type="button" class="blender-image-card" data-pubmat-file data-src="assets/portfolio/pubmat-cloud-grand-prix.png" data-original="assets/portfolio/pubmat-cloud-grand-prix.png" data-kind="image" data-title="JRU event creative and group photo" data-filename="pubmat-cloud-grand-prix.png" aria-label="View JRU event creative and group photo at original resolution">
+                <span class="blender-image-frame"><img src="assets/portfolio/pubmat-cloud-grand-prix.png" width="1774" height="887" loading="lazy" decoding="async" alt="The Cloud Grand Prix event group photo with AWS Student Builder Group JRU Chapter branded graphics"></span>
+                <span class="blender-image-caption"><strong>The Cloud Grand Prix</strong><span>02 / 02 <span aria-hidden="true">↗</span></span></span>
+              </button>
             </div>
+            <p class="blender-gallery-note">2 JRU publication and event images · original quality</p>
           </article>
           <article class="visual-work-card visual-category-card">
             <div class="visual-category-header"><span class="visual-work-meta">03 / DIGITAL MEDIA</span><span class="visual-category-count">GALLERY / 03</span></div>
@@ -1617,5 +1624,5 @@ const rm=matchMedia('(prefers-reduced-motion:reduce)').matches;let T=0;const col
  </div>
 </div>
 <link rel="stylesheet" href="assets/prelim-gallery.css?v=1">
-<script src="assets/prelim-gallery.js?v=3" defer></script>
+<script src="assets/prelim-gallery.js?v=4" defer></script>
 </body></html>

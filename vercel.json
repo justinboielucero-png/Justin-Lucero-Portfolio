@@ -16,6 +16,14 @@
     {
       "source": "/assets/portfolio/blender-grass-scene-original.jpg",
       "destination": "https://justinboielucero-png.github.io/Justin-Lucero-Portfolio/assets/portfolio/blender-grass-scene-original.jpg"
+    },
+    {
+      "source": "/assets/portfolio/pubmat-aws-jru-design.jpg",
+      "destination": "https://justinboielucero-png.github.io/Justin-Lucero-Portfolio/assets/portfolio/pubmat-aws-jru-design.jpg"
+    },
+    {
+      "source": "/assets/portfolio/pubmat-cloud-grand-prix.png",
+      "destination": "https://justinboielucero-png.github.io/Justin-Lucero-Portfolio/assets/portfolio/pubmat-cloud-grand-prix.png"
     }
   ]
 }
