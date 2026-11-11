@@ -52,6 +52,14 @@
     {
       "source": "/assets/portfolio/project-electronics-prototype.jpg",
       "destination": "https://justinboielucero-png.github.io/Justin-Lucero-Portfolio/assets/portfolio/project-electronics-prototype.jpg"
+    },
+    {
+      "source": "/assets/portfolio/video-project-presentation.mp4",
+      "destination": "https://justinboielucero-png.github.io/Justin-Lucero-Portfolio/assets/portfolio/video-project-presentation.mp4"
+    },
+    {
+      "source": "/assets/portfolio/video-project-poster.jpg",
+      "destination": "https://justinboielucero-png.github.io/Justin-Lucero-Portfolio/assets/portfolio/video-project-poster.jpg"
     }
   ]
 }

@@ -386,3 +386,71 @@
   #works .visual-project-gallery{grid-template-columns:1fr}
   #works .visual-project-gallery .blender-image-frame{height:clamp(300px,95vw,520px)}
 }
+
+
+/* Projects — original Computer Programming 1 digital literacy video */
+#works .project-video-feature {
+  display: grid;
+  grid-template-columns: minmax(0,.82fr) minmax(0,1.25fr);
+  gap: clamp(20px,2.6vw,42px);
+  align-items: center;
+  padding: clamp(20px,2.5vw,36px);
+  margin-top: clamp(20px,2.4vw,34px);
+  border: 1px solid rgba(116,185,255,.28);
+  border-radius: 15px;
+  background: linear-gradient(130deg,rgba(26,64,111,.72),rgba(5,18,36,.88) 62%);
+  box-shadow: inset 0 1px 0 rgba(185,219,255,.06), 0 18px 40px rgba(0,5,20,.24);
+}
+#works .project-video-copy { min-width:0; }
+#works .project-video-eyebrow {
+  display:block; font-size:10px;letter-spacing:.14em;font-weight:800;
+  color:#8ecaff;margin-bottom:15px;
+}
+#works .project-video-copy h5 {
+  margin:0 0 16px;
+  font-family:'Manrope',sans-serif;
+  font-weight:800;
+  font-size:clamp(24px,2.5vw,38px);
+  letter-spacing:-.055em;line-height:1.14;
+  color:#f0f7ff;
+}
+#works .project-video-dot{color:#48a8ff;}
+#works .project-video-copy p {
+  color:#b5cbe1;line-height:1.8;
+  font-size:clamp(12px,1vw,14px);
+  margin:0 0 20px;max-width:38ch;
+}
+#works .project-video-facts{
+  display:flex;flex-wrap:wrap;gap:8px;
+}
+#works .project-video-facts span {
+  display:inline-flex;align-items:center;gap:5px;
+  padding:7px 10px;
+  border:1px solid rgba(111,181,250,.22);
+  border-radius:100px;
+  background:rgba(4,19,38,.42);
+  font-size:10px;font-weight:700;letter-spacing:.04em;
+  color:#a1cbf6;
+}
+#works .project-video-facts span span{padding:0;background:none;border:0;font-size:15px}
+#works .project-video-media{ min-width:0;overflow:hidden;border:1px solid rgba(137,192,248,.25);border-radius:11px;background:#030b17}
+#works .project-video-player{width:100%;height:auto;aspect-ratio:16/9;object-fit:contain;display:block;background:#020710;max-height:70vh}
+#works .project-video-actions {
+  display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;
+  gap:10px;padding:14px clamp(12px,1.5vw,20px);color:#86acd0;
+  font-size:9px;font-weight:700;letter-spacing:.1em;
+}
+#works .project-video-links{display:flex;align-items:center;flex-wrap:wrap;gap:14px}
+#works .project-video-links a{color:#d4eaff;text-decoration:none;font-size:11px;letter-spacing:0;transition:color .2s ease}
+#works .project-video-links a:hover,#works .project-video-links a:focus-visible{color:#65b7ff;text-decoration:underline;text-underline-offset:4px}
+@media(max-width:900px){
+  #works .project-video-feature{grid-template-columns:1fr}
+  #works .project-video-copy p{max-width:70ch}
+}
+@media(max-width:480px){
+  #works .project-video-feature{padding:16px;gap:15px}
+  #works .project-video-actions{gap:12px}
+}
+@media(prefers-reduced-motion:reduce){
+  #works .project-video-links a{transition:none}
+}
