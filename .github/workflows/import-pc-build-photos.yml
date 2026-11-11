@@ -10,9 +10,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
-      - name: Download original PC photo package
+      - name: Download PC photo package
         env:
-          PHOTO_PACKAGE: "https://d2jqrm6oza8nb6.cloudfront.net/datasets/8c23a461-4e6b-4fde-a027-e77127ef4622.jpg?_jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJrZXlIYXNoIjoiNTQ3MThmNWI2MTM2Y2YwNCIsImJ1Y2tldCI6InJ1bndheS1kYXRhc2V0cyIsImV4cCI6MTc5NDU1NTYxMX0.SwUHjCPM5deLAwpFIWRI8a_G1Dh9vPh4NQWnsNefekI"
+          PHOTO_PACKAGE: "https://d2jqrm6oza8nb6.cloudfront.net/datasets/58a9e6b2-0e2b-400e-8ef1-2c8173a67608.jpg?_jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJrZXlIYXNoIjoiOTMzYzgyMWY3MmFjMTBmNiIsImJ1Y2tldCI6InJ1bndheS1kYXRhc2V0cyIsInN0YWdlIjoicHJvZCIsImV4cCI6MTc5NDQ4MTgyM30.x0L9iH2tosR4bQV4_seaTrYZTSpSK60hQHPOAz76iBQ"
         run: |
           curl -fLsS --retry 3 "$PHOTO_PACKAGE" -o /tmp/pc-build-transfer.jpg
           echo '01dcd8956dc65fa0551633cea179b69ab6640d1d166627dec3bd4102e6db8988  /tmp/pc-build-transfer.jpg' | sha256sum -c -
