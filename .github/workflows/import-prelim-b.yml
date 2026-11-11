@@ -15,7 +15,7 @@ jobs:
           IMAGE1: "https://d2jqrm6oza8nb6.cloudfront.net/datasets/c1bf69ad-b802-4eb7-a223-7c231a4815ee.jpg?_jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJrZXlIYXNoIjoiYzY3NjVkZGI2ZmQ1ZmJkNiIsImJ1Y2tldCI6InJ1bndheS1kYXRhc2V0cyIsInN0YWdlIjoicHJvZCIsImV4cCI6MTc5NDQ5MDg0M30.gwPyjfo8vZTet-HpLO-CZAgnfUDInc7JNRa5Hgm7adw"
           IMAGE2: "https://d2jqrm6oza8nb6.cloudfront.net/datasets/ab810c25-ecd3-4494-a0af-1d547f392330.jpg?_jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJrZXlIYXNoIjoiZWFlZTA5ZTUwNzJkOWMxZSIsImJ1Y2tldCI6InJ1bndheS1kYXRhc2V0cyIsInN0YWdlIjoicHJvZCIsImV4cCI6MTc5NDUxNTA0NX0.y4slR-hYi-9rbOHprb84yFOS5pW-RDsfLvha1FyxTNM"
           IMAGE3: "https://d2jqrm6oza8nb6.cloudfront.net/datasets/64b15085-f6cb-4e5e-bf01-d02fcb1a9a40.jpg?_jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJrZXlIYXNoIjoiN2VhOTJjZDgyNzQ0ZjdiNCIsImJ1Y2tldCI6InJ1bndheS1kYXRhc2V0cyIsInN0YWdlIjoicHJvZCIsImV4cCI6MTc5NDUzNjI4MH0.5CAxFtOuS5WFRxovfmDjJb0mAScSt9j_xGJIjuW55xI"
-          IMAGE4: "https://d2jqrm6oza8nb6.cloudfront.net/datasets/32a550d6-7eee-412d-b693-d3f83b392af1.jpg?_jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJrZXlIYXNoIjoiMDUyNmY3MDA5OGRmNGRhOSIsImJ1Y2tldCI6InJ1bndheS1kYXRhc2V0cyIsInN0YWdlIjoicHJvZCI6MTc5NDQ4MTI4MH0.2L6nFdZzm10am6X4oiq1kM9apID1tfKoHzJfx9L0F3E"
+          IMAGE4: "https://d2jqrm6oza8nb6.cloudfront.net/datasets/32a550d6-7eee-412d-b693-d3f83b392af1.jpg?_jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJrZXlIYXNoIjoiMDUyNmY3MDA5OGRmNGRhOSIsImJ1Y2tldCI6InJ1bndheS1kYXRhc2V0cyIsInN0YWdlIjoicHJvZCIsImV4cCI6MTc5NDQ4MTI4MH0.2L6nFdZzm10am6X4oiq1kM9apID1tfKoHzJfx9L0F3E"
         run: |
           set -euo pipefail
           mkdir -p assets/prelim
