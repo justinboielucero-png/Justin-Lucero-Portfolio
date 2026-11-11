@@ -891,6 +891,41 @@ footer{padding-inline:var(--page-gutter);padding-block:30px}
   .hero-full-name{font-size:clamp(30px,7.45vw,38px)}
 }
 
+
+/* Complete term reflections: clear three-paragraph reading layout */
+#reflect .reflection-panel{
+  display:block;
+  min-height:0;
+  max-width:100%;
+  padding:clamp(26px,3.1vw,50px);
+}
+#reflect .reflection-header{margin-bottom:14px}
+#reflect #reflection-title{
+  margin:0 0 24px;
+  font-size:clamp(26px,2.6vw,38px);
+  line-height:1.3;
+  letter-spacing:-.035em;
+}
+#reflect .reflection-body{
+  max-width:88ch;
+  font-family:var(--font-primary);
+  color:#c1cfdf;
+}
+#reflect .reflection-body p{
+  display:block;
+  margin:0;
+  color:#becfe0;
+  font-size:clamp(14px,1vw,16px);
+  line-height:1.9;
+  font-weight:400;
+  letter-spacing:0;
+}
+#reflect .reflection-body p+p{margin-top:1.25em}
+@media(max-width:760px){
+  #reflect .reflection-panel{padding:22px}
+  #reflect #reflection-title{margin-bottom:19px;font-size:clamp(23px,5vw,30px)}
+  #reflect .reflection-body p{font-size:15px;line-height:1.8}
+}
 </style></head>
 <body>
 <div id="bar"></div><div id="cd"></div><div id="cr"></div><canvas id="gl"></canvas>
@@ -964,10 +999,23 @@ footer{padding-inline:var(--page-gutter);padding-block:30px}
 
 
 
-<section id="reflect" class="section content-section" aria-labelledby="reflections-heading"><div class="mobile-label">03 — REFLECTIONS</div><h2 class="section-heading rv" id="reflections-heading">Learning reflections<span class="section-dot">.</span></h2><p class="section-description">Three distinct term reflections for Computer Programming 1. These are structured writing prompts — replace them with your own real experiences and lessons from each term.</p>
-        <div class="term-tabs" role="tablist" aria-label="Term reflections"><button type="button" class="term-tab active" role="tab" aria-selected="true" aria-controls="term-panel" data-term="prelim">01 / PRELIM</button><button type="button" class="term-tab" role="tab" aria-selected="false" aria-controls="term-panel" data-term="midterm">02 / MIDTERM</button><button type="button" class="term-tab" role="tab" aria-selected="false" aria-controls="term-panel" data-term="final">03 / FINAL</button></div>
-        <article class="reflection-panel" id="term-panel" role="tabpanel" aria-live="polite"><div class="reflection-header"><span id="reflection-counter">TERM 01 — 03</span><span class="reflection-mark" aria-hidden="true">✳</span></div><h3 id="reflection-title">Prelim Term Reflection</h3><p id="reflection-description">Write about your first experiences in Computer Programming 1: the topics introduced, skills you practiced, challenges you encountered, and what you learned from overcoming them.</p><div class="reflection-note"><span>PERSONAL REFLECTION</span><p id="reflection-prompt">Prompt: What did I learn in the prelim term, and how did I grow as a beginner programmer?</p></div></article>
-      </section>
+<section id="reflect" class="section content-section" aria-labelledby="reflections-heading">
+  <div class="mobile-label">03 — REFLECTIONS</div>
+  <h2 class="section-heading rv" id="reflections-heading">Learning reflections<span class="section-dot">.</span></h2>
+  <p class="section-description">My reflections on the lessons, challenges, and progress I experienced throughout Computer Programming 1.</p>
+  <div class="term-tabs" role="tablist" aria-label="Term reflections">
+    <button type="button" class="term-tab active" role="tab" id="tab-prelim" aria-selected="true" aria-controls="term-panel" tabindex="0" data-term="prelim">01 / PRELIM</button>
+    <button type="button" class="term-tab" role="tab" id="tab-midterm" aria-selected="false" aria-controls="term-panel" tabindex="-1" data-term="midterm">02 / MIDTERM</button>
+    <button type="button" class="term-tab" role="tab" id="tab-final" aria-selected="false" aria-controls="term-panel" tabindex="-1" data-term="final">03 / FINAL</button>
+  </div>
+  <article class="reflection-panel" id="term-panel" role="tabpanel" aria-labelledby="tab-prelim" aria-live="polite">
+    <div class="reflection-header"><span id="reflection-counter">TERM 01 — 03</span><span class="reflection-mark" aria-hidden="true">✳</span></div>
+    <h3 id="reflection-title">Prelim Reflection</h3>
+    <div id="reflection-description" class="reflection-body"><p>During the preliminary term in Computer Programming 1, I started developing my understanding of programming fundamentals and how to solve problems using logical steps. I learned about algorithms and flowcharts, which helped me understand how to organize instructions before writing an actual program. I also became familiar with the basic structure of Java, variables, data types, and input and output statements. These lessons taught me that programming is not just about writing code but also about understanding the problem and planning the correct solution.</p>
+<p>As we moved on to more advanced topics, I learned about conditional statements and how they allow a program to make decisions depending on certain conditions. Through different activities and programming exercises, I practiced using conditions to solve problems involving grades, passwords, calculations, and other situations. At first, I sometimes struggled with understanding the correct syntax and determining which conditions to use. However, by studying examples and practicing the activities, I gradually became more comfortable with writing and understanding code.</p>
+<p>Overall, the preliminary term helped me establish a strong foundation in programming. I realized that even simple programs require logical thinking, patience, and attention to detail. I also learned that making mistakes is part of the learning process because debugging helps me identify what went wrong and understand how to improve my code. This term encouraged me to practice more and become more confident in solving programming problems independently.</p></div>
+  </article>
+</section>
 
 <section id="contact" class="section content-section contact-section" aria-labelledby="contact-heading"><div class="mobile-label">04 — CONTACT</div><div class="contact-kicker">WHAT'S NEXT?</div><h2 class="contact-title rv" id="contact-heading">Let's keep <em>building.</em></h2><p>This portfolio is a living record of my progress. Every activity, project, and reflection is another step toward the developer I want to become.</p><a class="contact-link" href="https://github.com/justinboielucero-png" target="_blank" rel="noopener noreferrer">View my GitHub <span>↗</span></a></section>
 </main>
