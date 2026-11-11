@@ -198,3 +198,112 @@
     backdrop-filter:none;
   }
 }
+
+
+/* Computer Programming 1 — parent course with three term subsections */
+#works .course-module{position:relative;isolation:isolate;margin-bottom:clamp(60px,6vw,104px)}
+#works .course-module .course-banner{
+  position:relative;
+  margin:0;
+  min-height:190px;
+  border-radius:15px 15px 11px 11px;
+  background:linear-gradient(112deg,rgba(31,87,155,.88),rgba(13,45,84,.94) 62%,rgba(7,26,50,.97));
+  border:1px solid rgba(120,180,249,.37);
+  box-shadow:0 14px 42px rgba(0,8,26,.22);
+}
+#works .course-module .course-banner h3{font-size:clamp(28px,2.65vw,42px)}
+#works .course-term-group{
+  position:relative;
+  margin-top:0;
+  padding-top:clamp(22px,2.5vw,38px);
+  border-left:1px solid rgba(91,153,226,.23);
+  border-right:1px solid rgba(91,153,226,.23);
+  border-bottom:1px solid rgba(91,153,226,.23);
+  border-radius:0 0 14px 14px;
+  background:linear-gradient(180deg,rgba(12,33,60,.45),rgba(5,18,34,.64));
+}
+#works .course-term-heading{
+  display:flex;align-items:end;justify-content:space-between;gap:12px;
+  padding:0 clamp(21px,2.4vw,38px) clamp(20px,2.2vw,31px);
+}
+#works .course-term-eyebrow,#works .course-term-total{
+  display:block;
+  color:#8ebde9;
+  font:700 10px/1.5 'Manrope',sans-serif;
+  letter-spacing:.12em;
+}
+#works .course-term-heading h4{
+  margin:7px 0 0;
+  font:650 clamp(21px,2vw,30px)/1.3 'Manrope',sans-serif;
+  letter-spacing:-.035em;
+  color:#e5f2ff;
+}
+#works .course-term-total{text-align:right;white-space:nowrap;color:#739bbf}
+#works .archive-list.course-term-grid{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:clamp(12px,1.6vw,22px);
+  padding:0 clamp(16px,1.8vw,27px) clamp(16px,1.8vw,27px);
+}
+#works .course-term-grid .course-term-card,
+#works .course-term-grid .course-term-card:first-child,
+#works .course-term-grid .course-term-card:last-child{
+  display:flex;flex-direction:column;justify-content:space-between;
+  grid-column:auto;
+  min-height:265px;
+  padding:clamp(21px,2vw,32px);
+  border:1px solid rgba(112,171,236,.23);
+  border-radius:12px;
+  background:linear-gradient(145deg,rgba(14,40,72,.9),rgba(6,20,39,.95));
+  box-shadow:inset 0 1px rgba(207,230,255,.035);
+}
+#works .course-term-grid .course-term-card:first-child{
+  background:linear-gradient(145deg,rgba(21,60,106,.93),rgba(8,30,60,.95));
+  border-color:rgba(104,177,255,.35);
+}
+#works .course-term-grid .course-term-card:first-child::after{content:none}
+#works .course-term-meta{
+  display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;
+  color:#8bb8e7;
+  font:700 9px/1.5 'Manrope',sans-serif;
+  letter-spacing:.11em;
+}
+#works .course-term-card-content{padding:22px 0 18px}
+#works .course-term-card-content h5{
+  font:700 clamp(24px,2.6vw,38px)/1.2 'Manrope',sans-serif;
+  letter-spacing:-.05em;color:#f0f7ff;
+  margin:0 0 11px;
+}
+#works .course-term-grid .course-term-card p{
+  font-size:13px;line-height:1.75;
+  color:#afc4dc;
+  margin:0;max-width:39ch;
+}
+#works .course-term-placeholder{
+  display:flex;align-items:center;gap:10px;
+  padding-top:15px;border-top:1px solid rgba(117,176,232,.17);
+  color:#86b2df;font:600 10px/1.55 'Manrope',sans-serif;letter-spacing:.015em;
+}
+#works .course-term-placeholder>span{
+  display:grid;place-items:center;width:19px;height:19px;
+  border:1px solid rgba(125,188,255,.35);border-radius:50%;
+  color:#9acbff;font-size:15px;font-weight:400;line-height:1;
+}
+@media(max-width:1050px){
+  #works .archive-list.course-term-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  #works .course-term-grid .course-term-card:last-child{grid-column:1/-1}
+}
+@media(max-width:760px){
+  #works .course-module .course-banner{min-height:175px}
+  #works .course-term-heading{padding:0 20px 21px}
+  #works .archive-list.course-term-grid{grid-template-columns:1fr;padding:0 15px 15px}
+  #works .course-term-grid .course-term-card,
+  #works .course-term-grid .course-term-card:first-child,
+  #works .course-term-grid .course-term-card:last-child{grid-column:1;min-height:225px;padding:22px}
+  #works .course-term-total{font-size:9px}
+  #works .course-term-card-content{padding:18px 0}
+}
+@media(max-width:420px){
+  #works .course-term-heading{align-items:start;flex-direction:column}
+  #works .course-term-total{text-align:left}
+}
