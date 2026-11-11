@@ -1061,6 +1061,83 @@ footer{padding-inline:var(--page-gutter);padding-block:30px}
   #reflect .reflection-term-index{font-size:8px}
 }
 
+
+/* Ordered creative gallery categories — new content will replace empty media states. */
+#works .visual-work-categories{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:clamp(14px,1.7vw,26px);
+}
+#works .visual-work-categories .visual-category-card{
+  min-width:0;
+  display:flex;
+  flex-direction:column;
+  min-height:300px;
+  padding:clamp(21px,2vw,31px);
+}
+#works .visual-category-header{
+  display:flex;
+  align-items:flex-start;
+  justify-content:space-between;
+  gap:12px;
+  margin-bottom:10px;
+}
+#works .visual-category-count{
+  font-family:var(--font-primary);
+  font-size:10px;
+  font-weight:600;
+  letter-spacing:.08em;
+  color:#6d86a6;
+  white-space:nowrap;
+}
+#works .visual-category-card h4{
+  font-family:var(--font-primary);
+  font-size:clamp(19px,1.6vw,25px);
+  font-weight:650;
+  letter-spacing:-.03em;
+  line-height:1.3;
+  margin:4px 0 11px;
+}
+#works .visual-category-card p{
+  color:#a5b8cf;
+  line-height:1.7;
+  font-size:14px;
+  margin:0 0 18px;
+  max-width:58ch;
+}
+#works .visual-empty-media{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:13px;
+  min-height:100px;
+  flex:1;
+  margin-top:auto;
+  border:1px dashed rgba(91,146,217,.22);
+  border-radius:12px;
+  background:rgba(5,16,32,.36);
+  color:#7e9cbd;
+  font:500 12px/1.5 var(--font-primary);
+  letter-spacing:.01em;
+}
+#works .visual-empty-glyph{
+  font-size:24px;
+  font-weight:300;
+  line-height:1;
+  color:#5c9ee8;
+}
+#works .visual-category-card--last{grid-column:1/-1;min-height:240px}
+@media(max-width:760px){
+  #works .visual-work-categories{grid-template-columns:1fr}
+  #works .visual-work-categories .visual-category-card,
+  #works .visual-category-card--last{grid-column:auto;min-height:265px}
+  #works .visual-empty-media{min-height:90px}
+}
+@media(max-width:420px){
+  #works .visual-category-header{flex-wrap:wrap;gap:2px 12px}
+  #works .visual-category-count{display:none}
+}
+
 </style><link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&display=swap">
@@ -1108,29 +1185,53 @@ footer{padding-inline:var(--page-gutter);padding-block:30px}
           <article class="archive-card"><div class="archive-icon" aria-hidden="true">02</div><div><div class="archive-top"><h4>Project Documentation</h4><span class="status">OPTIONAL</span></div><p>Detailed reports, screenshots, procedures, and outcomes for relevant projects, where applicable.</p><span class="file-type">PDF DOCUMENT</span></div></article>
           <article class="archive-card"><div class="archive-icon" aria-hidden="true">03</div><div><div class="archive-top"><h4>Video Project Presentation</h4><span class="status">OPTIONAL</span></div><p>Project demonstration, walkthrough, or presentation video, if required or available.</p><span class="file-type">VIDEO / LINK</span></div></article>
         </div>
-        <div class="items-heading visual-heading"><h3>Creative & technical practice</h3><span>SELECTED VISUAL WORK</span></div>
-        <p class="section-description visual-intro">A few snapshots of the work I enjoy outside the classroom—from assembling PC builds to exploring 3D modeling and visual design.</p>
-        <div class="visual-work-grid">
-          <article class="visual-work-card visual-work-card--wide">
-            <div class="visual-work-meta">01 / HARDWARE</div>
-            <h4>PC Building</h4>
-            <p>Hands-on interest in PC components, case layouts, and custom desktop builds.</p>
-            <div class="work-image-pair">
-              <figure><img src="assets/portfolio/pc-build-dark-hq.png" alt="Black desktop PC case with a glass side panel" width="1440" height="2132" loading="lazy" decoding="async" /><figcaption>DESKTOP BUILD</figcaption></figure>
-              <figure><img src="assets/portfolio/pc-build-rgb-hq.png" alt="Desktop PC with blue RGB lighting and illuminated fans" width="1040" height="1696" loading="lazy" decoding="async" /><figcaption>RGB BUILD</figcaption></figure>
+        <div class="items-heading visual-heading"><h3>Creative &amp; technical practice</h3><span>SELECTED VISUAL WORK</span></div>
+        <p class="section-description visual-intro">A curated collection of creative and technical work, organized by category. Updated photographs and project images will be added here.</p>
+        <div class="visual-work-grid visual-work-categories" aria-label="Creative and technical work categories">
+          <article class="visual-work-card visual-category-card">
+            <div class="visual-category-header"><span class="visual-work-meta">01 / 3D MODELING</span><span class="visual-category-count">GALLERY / 01</span></div>
+            <h4>Blender</h4>
+            <p>Blender renders, 3D scenes, modeling exercises, and creative experiments.</p>
+            <div class="visual-empty-media" aria-label="Blender photos not yet uploaded">
+              <span class="visual-empty-glyph" aria-hidden="true">+</span>
+              <span>Photos to be added</span>
             </div>
           </article>
-          <article class="visual-work-card">
-            <div class="visual-work-meta">02 / 3D MODELING</div>
-            <h4>Blender Exploration</h4>
-            <p>Experimenting with 3D objects, materials, and scene composition in Blender.</p>
-            <figure class="work-image-single"><img src="assets/portfolio/blender-scene-hq.png" alt="Blender scene featuring a small pink 3D character in a grassy environment" width="1680" height="904" loading="lazy" decoding="async" /><figcaption>3D SCENE STUDY</figcaption></figure>
+          <article class="visual-work-card visual-category-card">
+            <div class="visual-category-header"><span class="visual-work-meta">02 / PUBLICATION DESIGN</span><span class="visual-category-count">GALLERY / 02</span></div>
+            <h4>Pubmats / JRU</h4>
+            <p>Publication materials and visual designs created for JRU-related activities.</p>
+            <div class="visual-empty-media" aria-label="Pubmats / JRU photos not yet uploaded">
+              <span class="visual-empty-glyph" aria-hidden="true">+</span>
+              <span>Photos to be added</span>
+            </div>
           </article>
-          <article class="visual-work-card">
-            <div class="visual-work-meta">03 / GRAPHIC DESIGN</div>
-            <h4>JRU Publication Design</h4>
-            <p>Publication material for “Exploring Chinatown — Food Fiesta in Binondo Manila.”</p>
-            <figure class="work-image-single"><img src="assets/portfolio/jru-pubmat-hq.png" alt="Exploring Chinatown food fiesta in Binondo Manila publication artwork" width="1280" height="720" loading="lazy" decoding="async" /><figcaption>JRU PUBMAT · BINONDO FOOD FIESTA</figcaption></figure>
+          <article class="visual-work-card visual-category-card">
+            <div class="visual-category-header"><span class="visual-work-meta">03 / DIGITAL MEDIA</span><span class="visual-category-count">GALLERY / 03</span></div>
+            <h4>Video Editing</h4>
+            <p>Edited videos, production work, and behind-the-scenes project stills.</p>
+            <div class="visual-empty-media" aria-label="Video Editing photos not yet uploaded">
+              <span class="visual-empty-glyph" aria-hidden="true">+</span>
+              <span>Photos to be added</span>
+            </div>
+          </article>
+          <article class="visual-work-card visual-category-card">
+            <div class="visual-category-header"><span class="visual-work-meta">04 / HARDWARE</span><span class="visual-category-count">GALLERY / 04</span></div>
+            <h4>PC Building</h4>
+            <p>Desktop builds, PC hardware, component setups, and assembly documentation.</p>
+            <div class="visual-empty-media" aria-label="PC Building photos not yet uploaded">
+              <span class="visual-empty-glyph" aria-hidden="true">+</span>
+              <span>Photos to be added</span>
+            </div>
+          </article>
+          <article class="visual-work-card visual-category-card visual-category-card--last">
+            <div class="visual-category-header"><span class="visual-work-meta">05 / PROJECT DOCUMENTATION</span><span class="visual-category-count">GALLERY / 05</span></div>
+            <h4>Projects</h4>
+            <p>Project photos, prototypes, development work, and documentation.</p>
+            <div class="visual-empty-media" aria-label="Projects photos not yet uploaded">
+              <span class="visual-empty-glyph" aria-hidden="true">+</span>
+              <span>Photos to be added</span>
+            </div>
           </article>
         </div>
       </section>
