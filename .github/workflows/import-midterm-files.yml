@@ -1,0 +1,40 @@
+name: Upload Midterm original screenshots
+on:
+  push:
+    branches: [main]
+    paths: [.github/workflows/import-midterm-files.yml]
+permissions:
+  contents: write
+jobs:
+  import-originals:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+      - name: Transfer and verify images without compression
+        env:
+          IMAGE_1: "https://d2jqrm6oza8nb6.cloudfront.net/datasets/a4ecbd35-9b73-4524-a80f-5a724aaaeda5.png?_jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJrZXlIYXNoIjoiOTMyMzY0OTNiNTNkMzBjMiIsImJ1Y2tldCI6InJ1bndheS1kYXRhc2V0cyIsInN0YWdlIjoicHJvZCIsImV4cCI6MTc5NDQ3NzQ1OX0.1gFGy_y4q9Sc1m_F_TkSDfg5Sa8D3SMPDHh7GU2jz38"
+          IMAGE_2: "https://d2jqrm6oza8nb6.cloudfront.net/datasets/914aa258-7a81-4990-91f2-f927a204cb80.jpg?_jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJrZXlIYXNoIjoiNmUzNDZlYjM3YjQ3NDY1MCIsImJ1Y2tldCI6InJ1bndheS1kYXRhc2V0cyIsInN0YWdlIjoicHJvZCIsImV4cCI6MTc5NDQ5Nzk3MX0.36NeSllAVbkPlAAA7SoaF0gytIl1_KlWsPCPCxbABWM"
+          IMAGE_3: "https://d2jqrm6oza8nb6.cloudfront.net/datasets/ba2c23a1-dcdb-4277-9844-85ffc0892909.png?_jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJrZXlIYXNoIjoiODAwNDgyNDZiNmZlODcyOSIsImJ1Y2tldCI6InJ1bndheS1kYXRhc2V0cyIsImV4cCI6MTc5NDQ4OTU0Mn0.TfaeCjDjK8-oxOMZFjnVPcOxTdsMqR0jITyJNWVYZ4U"
+          IMAGE_4: "https://d2jqrm6oza8nb6.cloudfront.net/datasets/bcfb6a7b-890f-48b9-a757-a9b5f884befd.png?_jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJrZXlIYXNoIjoiYzM2ZDc2MDhlNzgxZjc5ZCIsImJ1Y2tldCI6InJ1bndheS1kYXRhc2V0cyIsImV4cCI6MTc5NDQ2NTE2MH0.1yIzFUThWbfHoLJD8bDvurjSpywlckX1ZLHC_OK55S0"
+        run: |
+          set -euo pipefail
+          mkdir -p assets/midterm
+          curl --fail --location --silent --show-error --retry 3 "$IMAGE_1" --output "assets/midterm/investment-calculator.png"
+          echo 'bbc516eaa39ae56b23417333941011a7a40ed782d8c0a931076b451b0fbc96ef  assets/midterm/investment-calculator.png' | sha256sum -c -
+          curl --fail --location --silent --show-error --retry 3 "$IMAGE_2" --output "assets/midterm/operator-activities.jpg"
+          echo '213819a740a70e13eaefbb4e86a079faa5f65db3eb09d148d678c8cf0837dbe7  assets/midterm/operator-activities.jpg' | sha256sum -c -
+          curl --fail --location --silent --show-error --retry 3 "$IMAGE_3" --output "assets/midterm/preliminary-grade-calculator.png"
+          echo '7fa6cb12e3e984643583a8ba852c1dc424eda7db7953386308cbc31eafe04e52  assets/midterm/preliminary-grade-calculator.png' | sha256sum -c -
+          curl --fail --location --silent --show-error --retry 3 "$IMAGE_4" --output "assets/midterm/student-information-program.png"
+          echo '012ae24096a5e59cdd54f9762a95f7fd282106ac13123bcb08d7eaed65d2f3ba  assets/midterm/student-information-program.png' | sha256sum -c -
+      - name: Publish Midterm screenshots to main
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add assets/midterm/
+          if ! git diff --cached --quiet; then
+            git commit -m "Add four original Midterm coursework screenshots"
+            git pull --rebase origin main
+            git push origin HEAD:main
+          fi
