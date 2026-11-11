@@ -12,10 +12,10 @@ jobs:
       - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
       - name: Transfer and verify images without compression
         env:
-          IMAGE_1: "https://d2jqrm6oza8nb6.cloudfront.net/datasets/a4ecbd35-9b73-4524-a80f-5a724aaaeda5.png?_jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJrZXlIYXNoIjoiOTMyMzY0OTNiNTNkMzBjMiIsImJ1Y2tldCI6InJ1bndheS1kYXRhc2V0cyIsInN0YWdlIjoicHJvZCIsImV4cCI6MTc5NDQ3NzQ1OX0.1gFGy_y4q9Sc1m_F_TkSDfg5Sa8D3SMPDHh7GU2jz38"
-          IMAGE_2: "https://d2jqrm6oza8nb6.cloudfront.net/datasets/914aa258-7a81-4990-91f2-f927a204cb80.jpg?_jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJrZXlIYXNoIjoiNmUzNDZlYjM3YjQ3NDY1MCIsImJ1Y2tldCI6InJ1bndheS1kYXRhc2V0cyIsInN0YWdlIjoicHJvZCIsImV4cCI6MTc5NDQ5Nzk3MX0.36NeSllAVbkPlAAA7SoaF0gytIl1_KlWsPCPCxbABWM"
-          IMAGE_3: "https://d2jqrm6oza8nb6.cloudfront.net/datasets/ba2c23a1-dcdb-4277-9844-85ffc0892909.png?_jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJrZXlIYXNoIjoiODAwNDgyNDZiNmZlODcyOSIsImJ1Y2tldCI6InJ1bndheS1kYXRhc2V0cyIsImV4cCI6MTc5NDQ4OTU0Mn0.TfaeCjDjK8-oxOMZFjnVPcOxTdsMqR0jITyJNWVYZ4U"
-          IMAGE_4: "https://d2jqrm6oza8nb6.cloudfront.net/datasets/bcfb6a7b-890f-48b9-a757-a9b5f884befd.png?_jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJrZXlIYXNoIjoiYzM2ZDc2MDhlNzgxZjc5ZCIsImJ1Y2tldCI6InJ1bndheS1kYXRhc2V0cyIsImV4cCI6MTc5NDQ2NTE2MH0.1yIzFUThWbfHoLJD8bDvurjSpywlckX1ZLHC_OK55S0"
+          IMAGE_1: "https://d2jqrm6oza8nb6.cloudfront.net/datasets/8dc7576c-3bbe-432d-b137-26506ccb119b.png?_jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJrZXlIYXNoIjoiMDhhMWYyMmNkNzkxNWMyOSIsImJ1Y2tldCI6InJ1bndheS1kYXRhc2V0cyIsInN0YWdlIjoicHJvZCIsImV4cCI6MTc5NDQ2NjIyMH0.C1tI7-FWvtJs2SipoHQuSH2QvccZQRd9z1e812phd98"
+          IMAGE_2: "https://d2jqrm6oza8nb6.cloudfront.net/datasets/b4fe1e5a-d293-4404-940e-820f98a3c9bf.jpg?_jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJrZXlIYXNoIjoiNTdiNGExMzMzYjZkMmJjZSIsImJ1Y2tldCI6InJ1bndheS1kYXRhc2V0cyIsInN0YWdlIjoicHJvZCIsImV4cCI6MTc5NDUwNTEzOX0.jGNP9J-l7mvmeJT2Ch4rx8CalFZugV5PvLdtkovenmg"
+          IMAGE_3: "https://d2jqrm6oza8nb6.cloudfront.net/datasets/03c05624-9a74-4214-95fd-aefae3a98605.png?_jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJrZXlIYXNoIjoiNzViZTc0ZjRhMmM0MzhjYyIsImJ1Y2tldCI6InJ1bndheS1kYXRhc2V0cyIsInN0YWdlIjoicHJvZCIsImV4cCI6MTc5NDQ5NDQ1Mn0.fMrVu5OQCGAoefjDcRTwOnasTg5aJH_k9gIAe7rt31I"
+          IMAGE_4: "https://d2jqrm6oza8nb6.cloudfront.net/datasets/e06f8f91-5cc3-44e5-a936-6591c48ee4ff.png?_jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJrZXlIYXNoIjoiZDBhNzVmYTc0ODUzZTU2ZSIsImJ1Y2tldCI6InJ1bndheS1kYXRhc2V0cyIsInN0YWdlIjoicHJvZCIsImV4cCI6MTc5NDQ4OTEyN30.XHKb9c_j2xkQfcG1B9fq0IbevsOHMVNwFNDTXEnw8v4"
         run: |
           set -euo pipefail
           mkdir -p assets/midterm
