@@ -21,7 +21,8 @@
     g.items=[...g.lib.querySelectorAll('['+g.data+']')];
     g.filters=g.filter?[...g.lib.querySelectorAll('['+g.filter+']')]:[];
   });
-  const all=galleries.flatMap(g=>g.items);
+  const blenderItems=[...document.querySelectorAll('[data-blender-file]')];
+  const all=[...galleries.flatMap(g=>g.items),...blenderItems];
   const kicker=dialog.querySelector('.prelim-viewer-kicker');
   const stage=document.getElementById('prelim-viewer-stage');
   const img=document.getElementById('prelim-viewer-image');
@@ -66,7 +67,10 @@
   const deepLink=galleries.find(g=>location.hash==='#'+g.id+'-library');
   if(deepLink)setArchive(deepLink,true);
   function visible(){
-    return all.filter(card=>!card.hidden&&!card.closest('.prelim-library').hidden);
+    return all.filter(card=>{
+      const library=card.closest('.prelim-library');
+      return !card.hidden&&(!library||!library.hidden);
+    });
   }
   function view(card){
     if(!card)return;
@@ -78,12 +82,12 @@
     if(isPdf){pdf.title=card.dataset.title+' PDF preview';pdf.src=src+'#toolbar=1&navpanes=0'}
     else{img.alt=card.dataset.title;img.src=src}
     const gallery=galleries.find(g=>g.items.includes(card));
-    kicker.textContent=(gallery?gallery.term:'COURSEWORK')+' / FILE VIEWER';
+    kicker.textContent=card.hasAttribute('data-blender-file')?'BLENDER / CREATIVE WORK':(gallery?gallery.term:'COURSEWORK')+' / FILE VIEWER';
     title.textContent=card.dataset.title;
     filename.textContent=card.dataset.filename;
     filetype.textContent=isPdf?'ORIGINAL PDF':'ORIGINAL IMAGE';
     zoom.hidden=isPdf;zoom.textContent='Zoom to actual size';
-    original.href=src;
+    original.href=card.dataset.original||src;
     counter.textContent=String(current+1).padStart(2,'0')+' / '+String(active.length).padStart(2,'0');
     prev.disabled=active.length<2;next.disabled=active.length<2;
   }
@@ -94,7 +98,7 @@
   }
   function show(card){
     restoreFocus=card;
-    active=visible();
+    active=card.hasAttribute('data-blender-file')?blenderItems:visible().filter(item=>!item.hasAttribute('data-blender-file'));
     current=active.indexOf(card);
     if(current<0)return;
     dialog.hidden=false;document.body.classList.add('prelim-modal-open');

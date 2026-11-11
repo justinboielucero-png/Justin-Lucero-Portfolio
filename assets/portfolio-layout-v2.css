@@ -307,3 +307,19 @@
   #works .course-term-heading{align-items:start;flex-direction:column}
   #works .course-term-total{text-align:left}
 }
+
+/* Blender showcase: lossless clarified previews; originals accessible via modal */
+#works .visual-work-categories .visual-category-card:first-child{display:flex;flex-direction:column}
+#works .visual-blender-gallery{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(10px,1.25vw,18px);width:100%;margin-top:auto;padding-top:clamp(18px,1.8vw,26px)}
+#works .blender-image-card{display:flex;flex-direction:column;min-width:0;padding:0;overflow:hidden;text-align:left;cursor:pointer;color:#eef6ff;background:rgba(3,14,29,.82);border:1px solid rgba(110,168,235,.3);border-radius:11px;transition:border-color .2s,transform .2s,box-shadow .2s}
+#works .blender-image-card:hover{transform:translateY(-3px);border-color:rgba(143,202,255,.8);box-shadow:0 12px 27px rgba(0,4,19,.34)}
+#works .blender-image-card:focus-visible{outline:2px solid #a4d4ff;outline-offset:3px}
+#works .blender-image-frame{display:flex;align-items:center;justify-content:center;aspect-ratio:16/9;width:100%;overflow:hidden;background:#091624;border-bottom:1px solid rgba(105,161,227,.20)}
+#works .blender-image-frame img{display:block;width:100%;height:100%;object-fit:contain;object-position:center;image-rendering:auto}
+#works .blender-image-caption{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:12px 14px;color:#e8f4ff;font:700 clamp(11px,.85vw,13px)/1.4 'Manrope',sans-serif}
+#works .blender-image-caption strong{font:inherit}
+#works .blender-image-caption>span{color:#88baeb;font-size:10px;letter-spacing:.09em;white-space:nowrap}
+#works .blender-image-caption>span>span{color:#b9deff;font-size:17px}
+#works .blender-gallery-note{margin:12px 0 0;color:#8caccd;font:500 11px/1.5 'Manrope',sans-serif}
+@media(max-width:600px){#works .visual-blender-gallery{grid-template-columns:1fr}#works .blender-image-frame{aspect-ratio:16/8.5}}
+@media(prefers-reduced-motion:reduce){#works .blender-image-card{transition:none}#works .blender-image-card:hover{transform:none}}

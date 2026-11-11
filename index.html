@@ -1172,7 +1172,7 @@ body::after{
 </style><link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&display=swap">
-<link rel="stylesheet" href="assets/portfolio-layout-v2.css?v=3">
+<link rel="stylesheet" href="assets/portfolio-layout-v2.css?v=4">
 </head>
 <body>
 <div id="bar"></div><div id="cd"></div><div id="cr"></div><canvas id="gl"></canvas>
@@ -1406,10 +1406,17 @@ body::after{
             <div class="visual-category-header"><span class="visual-work-meta">01 / 3D MODELING</span><span class="visual-category-count">GALLERY / 01</span></div>
             <h4>Blender</h4>
             <p>Blender renders, 3D scenes, modeling exercises, and creative experiments.</p>
-            <div class="visual-empty-media" aria-label="Blender photos not yet uploaded">
-              <span class="visual-empty-glyph" aria-hidden="true">+</span>
-              <span>Photos to be added</span>
+            <div class="visual-blender-gallery" aria-label="Blender modeling screenshots">
+              <button type="button" class="blender-image-card" data-blender-file data-src="assets/portfolio/blender-neon-character-enhanced.png" data-original="assets/portfolio/blender-neon-character-original.jpg" data-kind="image" data-title="Neon character modeling" data-filename="blender-neon-character-enhanced.png" aria-label="Enlarge Neon character modeling">
+                <span class="blender-image-frame"><img src="assets/portfolio/blender-neon-character-enhanced.png" width="2048" height="1073" loading="lazy" decoding="async" alt="Blender viewport showing a purple block-style character with a glowing cyan sword"></span>
+                <span class="blender-image-caption"><strong>Neon character</strong><span>01 / 02 <span aria-hidden="true">↗</span></span></span>
+              </button>
+              <button type="button" class="blender-image-card" data-blender-file data-src="assets/portfolio/blender-grass-scene-enhanced.png" data-original="assets/portfolio/blender-grass-scene-original.jpg" data-kind="image" data-title="Grass environment scene" data-filename="blender-grass-scene-enhanced.png" aria-label="Enlarge Grass environment scene">
+                <span class="blender-image-frame"><img src="assets/portfolio/blender-grass-scene-enhanced.png" width="2048" height="1104" loading="lazy" decoding="async" alt="Blender viewport showing a magenta character in a grassy landscape"></span>
+                <span class="blender-image-caption"><strong>Grass environment</strong><span>02 / 02 <span aria-hidden="true">↗</span></span></span>
+              </button>
             </div>
+            <p class="blender-gallery-note">2 Blender scenes · enhanced clarity · original images retained</p>
           </article>
           <article class="visual-work-card visual-category-card">
             <div class="visual-category-header"><span class="visual-work-meta">02 / PUBLICATION DESIGN</span><span class="visual-category-count">GALLERY / 02</span></div>
@@ -1610,5 +1617,5 @@ const rm=matchMedia('(prefers-reduced-motion:reduce)').matches;let T=0;const col
  </div>
 </div>
 <link rel="stylesheet" href="assets/prelim-gallery.css?v=1">
-<script src="assets/prelim-gallery.js?v=2" defer></script>
+<script src="assets/prelim-gallery.js?v=3" defer></script>
 </body></html>
