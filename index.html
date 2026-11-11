@@ -717,6 +717,30 @@ body,main,nav,section,footer,button{font-family:var(--font-primary)}
  .hero-full-name{font-size:clamp(30px,7.7vw,39px);letter-spacing:-.058em}
 }
 
+
+/* Justin profile portrait placement: native 600 × 600 photograph, no resizing/transcoding. */
+.photo--portrait{isolation:isolate;transform-style:flat;min-height:clamp(390px,40vw,610px)}
+.photo--portrait .identity-art{position:absolute;inset:0;z-index:0}
+.photo--portrait .profile-photo{
+  position:absolute;inset:0;z-index:2;
+  display:block;width:100%;height:100%;
+  object-fit:cover;object-position:center 26%;
+  border-radius:inherit;
+  background:#0b182c;
+}
+.photo--portrait .profile-photo[hidden]{display:none}
+.photo--portrait .photo-corner{
+  z-index:3;padding:7px 11px;border-radius:6px;
+  color:#e6f1ff;background:rgba(3,9,20,.72);
+  border:1px solid rgba(165,204,245,.22);
+}
+@media(max-width:760px){
+ .photo--portrait{min-height:360px;aspect-ratio:4/5}
+}
+@media(max-width:480px){
+ .photo--portrait{min-height:300px}
+}
+
 </style></head>
 <body>
 <div id="bar"></div><div id="cd"></div><div id="cr"></div><canvas id="gl"></canvas>
@@ -740,8 +764,9 @@ body,main,nav,section,footer,button{font-family:var(--font-primary)}
 <section id="about">
   <h2 class="rv"><span>01 — ABOUT ME</span>A student who<br><span class="about-heading-accent">learns by building.</span></h2>
   <div class="about rv">
-    <div class="photo" id="ph" aria-label="Abstract Justin Lucero monogram graphic">
-      <div class="identity-art" aria-hidden="true"><div class="identity-orbit"></div><b>JL</b><small>JUSTIN BOIE E. LUCERO</small></div>
+    <div class="photo photo--portrait" id="ph" aria-label="Portrait photograph of Justin Boie Lucero">
+      <div class="identity-art" aria-hidden="true"><div class="identity-orbit"></div><b>JL</b><small>JUSTIN BOIE LUCERO</small></div>
+      <img class="profile-photo" src="assets/portfolio/justin-profile.jpg" alt="Justin Boie Lucero smiling in a light collared shirt" width="600" height="600" loading="lazy" decoding="async" onerror="this.hidden=true" onload="this.hidden=false" />
       <span class="photo-corner">JRU / 2026</span>
     </div>
     <div class="about-description"><div class="prose"><p>I'm <strong>Justin Boie E. Lucero</strong>, a first-year <strong>BS Information Technology</strong> student at <strong>Jose Rizal University</strong> in Mandaluyong City, Philippines.</p><p>I’m passionate about technology and digital creativity. I enjoy building PCs, designing pubmats and digital graphics, modeling 3D objects in Blender, and editing videos. I’m always eager to explore new tools and develop skills that help me turn ideas into better work.</p><p>This e-portfolio documents my learning in <strong>Computer Programming 1</strong> alongside selected technology projects and experiences. It is a work in progress: coursework, project details, and reflections will continue to grow as I gain experience.</p></div><div class="stats"><div><b>01</b><small>Year level</small></div><div><b>BSIT</b><small>Degree program</small></div><div><b>JRU</b><small>University</small></div></div></div>
