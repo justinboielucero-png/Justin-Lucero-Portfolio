@@ -741,6 +741,39 @@ body,main,nav,section,footer,button{font-family:var(--font-primary)}
  .photo--portrait{min-height:300px}
 }
 
+
+/* JB portrait: slightly smaller, aligned, responsive frame */
+@media(min-width:761px){
+  #about .about{
+    grid-template-columns:minmax(0,.73fr) minmax(0,1.27fr);
+    gap:clamp(24px,3.4vw,68px);
+    align-items:stretch;
+  }
+  #about .photo.photo--portrait{
+    box-sizing:border-box;
+    width:100%;
+    max-width:510px;
+    min-height:0;
+    height:500px;
+    aspect-ratio:auto;
+    justify-self:start;
+  }
+}
+@media(max-width:760px){
+  #about .about{grid-template-columns:minmax(0,1fr)}
+  #about .photo.photo--portrait{
+    width:100%;
+    max-width:440px;
+    height:auto;
+    min-height:0;
+    aspect-ratio:1/1;
+    margin:0 auto;
+  }
+}
+@media(max-width:480px){
+  #about .photo.photo--portrait{max-width:100%}
+}
+
 </style></head>
 <body>
 <div id="bar"></div><div id="cd"></div><div id="cr"></div><canvas id="gl"></canvas>
