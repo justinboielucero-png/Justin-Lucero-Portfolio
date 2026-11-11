@@ -1,0 +1,27 @@
+name: Verify live project presentation media
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/verify-live-project-video.yml'
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - name: Check deployed HTML, MP4, and poster
+        shell: bash
+        run: |
+          set -euo pipefail
+          for base in "https://justinboielucero-png.github.io/Justin-Lucero-Portfolio" "https://justin-lucero-portfolio.vercel.app"; do
+            echo "Checking $base"
+            curl -fLsS --retry 4 --retry-delay 4 --max-time 100 "$base/" -o /tmp/project-index.html
+            grep -q 'id="project-video-presentation"' /tmp/project-index.html
+            curl -fLsS --retry 4 --retry-delay 4 --max-time 140 "$base/assets/portfolio/video-project-presentation.mp4" -o /tmp/project-video.mp4
+            echo '4ea9deaa04904471ed27df9a7a3eea850e324e3e0b123826fbeab10e63b99497  /tmp/project-video.mp4' | sha256sum --check
+            curl -fLsS --retry 4 --retry-delay 4 --max-time 100 "$base/assets/portfolio/video-project-poster.jpg" -o /tmp/project-poster.jpg
+            echo '9693600ef3602addc52331bf3285bd0a7f0420aa8fc95b90cc6009f86d2bdb74  /tmp/project-poster.jpg' | sha256sum --check
+            echo "PASS: $base"
+          done
