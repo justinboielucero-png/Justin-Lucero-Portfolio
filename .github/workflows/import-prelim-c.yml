@@ -13,7 +13,7 @@ jobs:
       - name: Copy and verify original JPG files
         env:
           FILE1: "https://d2jqrm6oza8nb6.cloudfront.net/datasets/c1c7aebc-fd13-465c-9e17-6211d5fede3a.jpg?_jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJrZXlIYXNoIjoiZDQzYjcyYWYzNTUyNTEwOCIsImJ1Y2tldCI6InJ1bndheS1kYXRhc2V0cyIsInN0YWdlIjoicHJvZCIsImV4cCI6MTc5NDQ3Njk3NX0.Mh5HoiIB8gVh4aHu4n0WIJtgHANRIpgiHiM7rHzrq9E"
-          FILE2: "https://d2jqrm6oza8nb6.cloudfront.net/datasets/dc50d973-2944-4fb8-88e5-58d4a2303c31.jpg?_jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJrZXlYXNoIjoiOTJhMGFkMGM0ZjE5OGQwZiIsImJ1Y2tldCI6InJ1bndheS1kYXRhc2V0cyIsInN0YWdlIjoicHJvZCIsImV4cCI6MTc5NDQ2NDM5Nn0.3fnHrpvrQL0GgzI_Y9su8N6iLPGEf5ZMEbYTVdLtMR8"
+          FILE2: "https://d2jqrm6oza8nb6.cloudfront.net/datasets/dc50d973-2944-4fb8-88e5-58d4a2303c31.jpg?_jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJrZXlIYXNoIjoiOTJhMGFkMGM0ZjE5OGQwZiIsImJ1Y2tldCI6InJ1bndheS1kYXRhc2V0cyIsInN0YWdlIjoicHJvZCIsImV4cCI6MTc5NDQ2NDM5Nn0.3fnHrpvrQL0GgzI_Y9su8N6iLPGEf5ZMEbYTVdLtMR8"
           FILE3: "https://d2jqrm6oza8nb6.cloudfront.net/datasets/d8fa48b1-10ae-450b-a5d1-5f3ffa71ffd0.jpg?_jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJrZXlIYXNoIjoiMzgzNTliZjM5MDIyMjA2MSIsImJ1Y2tldCI6InJ1bndheS1kYXRhc2V0cyIsInN0YWdlIjoicHJvZCIsImV4cCI6MTc5NDUwOTQyN30.JE8Vyl4FUMboPxNliYF02dBi697T0XlNypirRYGGD2I"
           FILE4: "https://d2jqrm6oza8nb6.cloudfront.net/datasets/1a9aea98-c23a-4752-8964-1e5b00c55508.jpg?_jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJrZXlIYXNoIjoiMTA0ZGQ4NWVjM2Y2YjdjMCIsImJ1Y2tldCI6InJ1bndheS1kYXRhc2V0cyIsInN0YWdlIjoicHJvZCIsImV4cCI6MTc5NDUyMjcxOH0.Y_N9PNvjp7Lc_c8KYrtWWxdjURAgExDFy6z9Tq0iQMM"
         run: |
