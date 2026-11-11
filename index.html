@@ -1253,7 +1253,8 @@ body::after{
                   <h5 id="cp1-finals-heading">Finals</h5>
                   <p>Final-term programming activities, completed exercises, and supporting course documentation.</p>
                 </div>
-                <div class="course-term-placeholder"><span aria-hidden="true">+</span> Files and photos to be added</div>
+                <div class="course-term-ready"><span class="prelim-ready-pip" aria-hidden="true"></span> 2 IMAGES AVAILABLE · COURSE ACTIVITIES</div>
+                <button type="button" class="prelim-browse-btn" id="finals-browse" aria-controls="finals-library" aria-expanded="false"><span>Browse Finals Work</span><span aria-hidden="true">↗</span></button>
               </article>
             </div>
           </div>
@@ -1373,6 +1374,29 @@ body::after{
 </button>
   </div>
   <p class="prelim-gallery-note"><span aria-hidden="true">ⓘ</span> Click to preview each original screenshot. Images are not recompressed or cropped.</p>
+</section>
+<section class="prelim-library" id="finals-library" aria-labelledby="finals-library-title" hidden>
+  <div class="prelim-library-header">
+    <div><span class="prelim-eyebrow">COMPUTER PROGRAMMING 1 / 03 / FINALS</span><h4 id="finals-library-title">Finals <em>archive.</em></h4><p>Course activity screenshots covering operators and repetition structures in Computer Programming 1.</p></div>
+    <button type="button" class="prelim-collapse" id="finals-collapse" aria-label="Close Finals archive">Close archive <span aria-hidden="true">×</span></button>
+  </div>
+  <div class="prelim-library-toolbar" role="group" aria-label="Finals files">
+    <span class="prelim-eyebrow">ORIGINAL SCREENSHOTS</span>
+    <span class="prelim-count" id="finals-count" aria-live="polite">Showing 2 files</span>
+  </div>
+  <div class="prelim-item-grid" id="finals-grid">
+<button type="button" class="prelim-item" data-finals-file data-src="assets/finals/operators-activities.jpg" data-kind="image" data-group="activities" data-title="Operators Activities" data-filename="operators-activities.jpg" aria-label="View Operators Activities">
+ <span class="prelim-item-preview"><img src="assets/finals/operators-activities.jpg" alt="Operators Activities — original screenshot" loading="lazy" decoding="async"></span>
+ <span class="prelim-item-copy"><span class="prelim-item-type">ORIGINAL IMAGE / 01</span><strong>Operators Activities</strong><small>Input operations, arithmetic operators, and assignment operators</small></span>
+ <span class="prelim-item-action" aria-hidden="true">↗</span>
+</button>
+<button type="button" class="prelim-item" data-finals-file data-src="assets/finals/loop-activities.jpg" data-kind="image" data-group="activities" data-title="Loop Activities" data-filename="loop-activities.jpg" aria-label="View Loop Activities">
+ <span class="prelim-item-preview"><img src="assets/finals/loop-activities.jpg" alt="Loop Activities — original screenshot" loading="lazy" decoding="async"></span>
+ <span class="prelim-item-copy"><span class="prelim-item-type">ORIGINAL IMAGE / 02</span><strong>Loop Activities</strong><small>While loop, do-while loop, and for loop course activities</small></span>
+ <span class="prelim-item-action" aria-hidden="true">↗</span>
+</button>
+  </div>
+  <p class="prelim-gallery-note"><span aria-hidden="true">ⓘ</span> Click either screenshot for the full-screen original. Use the arrows to move between images.</p>
 </section>
         <div class="gallery-heading-shell"><span class="gallery-index">02 / CREATIVE PRACTICE</span><div class="items-heading visual-heading"><h3>Creative &amp; technical practice</h3><span>SELECTED VISUAL WORK</span></div><span class="gallery-deco" aria-hidden="true">✳</span></div>
         <p class="section-description visual-intro">A curated collection of creative and technical work, organized by category. Updated photographs and project images will be added here.</p>
@@ -1549,5 +1573,5 @@ const rm=matchMedia('(prefers-reduced-motion:reduce)').matches;let T=0;const col
  </div>
 </div>
 <link rel="stylesheet" href="assets/prelim-gallery.css?v=1">
-<script src="assets/prelim-gallery.js" defer></script>
+<script src="assets/prelim-gallery.js?v=2" defer></script>
 </body></html>
