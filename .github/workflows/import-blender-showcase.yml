@@ -10,25 +10,33 @@ jobs:
   import-original-and-enhanced:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
-      - name: Transfer and checksum-verify screenshots
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+      - name: Restore and verify original and enhanced screenshots
         env:
-          IMAGE_1: "https://d2jqrm6oza8nb6.cloudfront.net/datasets/e81d7dd2-e7a7-469f-b830-ba399de78f06.png?_jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJrZXlIYXNoIjoiMTNiZDk1ODcwMjUwYzA4ZSIsImJ1Y2tldCI6InJ1bndheS1kYXRhc2V0cyIsInN0YWdlIjoicHJvZCIsImV4cCI6MTc5NDU0ODQ4N30.KDyArrKDxfP0hdFRqaTQ0ID8RSfAfDHEMBPTRkouLjc"
-          IMAGE_2: "https://d2jqrm6oza8nb6.cloudfront.net/datasets/24793a7b-63b2-4812-8f70-7c82c7d7c3ae.png?_jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJrZXlIYXNoIjoiNDgyYWJmYjMzYmYxNTA3YiIsImJ1Y2tldCI6InJ1bndheS1kYXRhc2V0cyIsImV4cCI6MTc5NDQ3OTUzOX0.oD85XLUu8yke-nVeV08TGa-AtgNq97NduYo0_8PuYFk"
-          IMAGE_3: "https://d2jqrm6oza8nb6.cloudfront.net/datasets/c416c5ee-b175-4f8b-ba13-0d9ebbdc5e8d.jpg?_jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJrZXlIYXNoIjoiMDQ1ZGI3YmY2NmUxMDE4NyIsImJ1Y2tldCI6InJ1bndheS1kYXRhc2V0cyIsInN0YWdlIjoicHJvZCIsImV4cCI6MTc5NDUxMTU1MX0.aNuqQ6cQK1s6WNcyKRsvPJ5ReDShqQTHKjcrObH47Yo"
-          IMAGE_4: "https://d2jqrm6oza8nb6.cloudfront.net/datasets/53a9ec1b-2ce3-4be9-9ec6-a670088585a0.jpg?_jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJrZXlIYXNoIjoiNGQ2YWExNTM0NGNiMThhZSIsImJ1Y2tldCI6InJ1bndheS1kYXRhc2V0cyIsImV4cCI6MTc5NDUxMDU0N30.tBjWG-cg5n5I-gbWyCXfzTO231zbVKN_2PhDwOEhSzw"
+          BLENDER_TRANSFER: "https://d2jqrm6oza8nb6.cloudfront.net/datasets/dbb4bbf0-d352-47ee-9748-d8ad2055b0ac.jpg?_jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJrZXlIYXNoIjoiYzI3YWZhNzA4Mjg0NmViMCIsImJ1Y2tldCI6InJ1bndheS1kYXRhc2V0cyIsInN0YWdlIjoicHJvZCIsImV4cCI6MTc5NDU1NzgwOH0.HgIcHuhnUozmSklJzhH_2_Ai2-ktFs2XryMIdXWWpME"
         run: |
           set -euo pipefail
-          mkdir -p assets/portfolio
-          curl --fail --location --silent --show-error --retry 3 "$IMAGE_1" --output "assets/portfolio/blender-neon-character-enhanced.png"
-          printf '%s  %s\n' '82e758a7664264351f5e5f6cf7b381f95cb24ae7dbf1588ecd2e03712bc32262' 'assets/portfolio/blender-neon-character-enhanced.png' | sha256sum -c -
-          curl --fail --location --silent --show-error --retry 3 "$IMAGE_2" --output "assets/portfolio/blender-grass-scene-enhanced.png"
-          printf '%s  %s\n' '11691f4aeb8cb9a3dc03f6a74121854e9307eec4b6f809a7cf415d5c5749d760' 'assets/portfolio/blender-grass-scene-enhanced.png' | sha256sum -c -
-          curl --fail --location --silent --show-error --retry 3 "$IMAGE_3" --output "assets/portfolio/blender-neon-character-original.jpg"
-          printf '%s  %s\n' '762e134fef85e4cc833b2cd66f2229bba88727f90ebfd53bc0d48bac6e6b4b2d' 'assets/portfolio/blender-neon-character-original.jpg' | sha256sum -c -
-          curl --fail --location --silent --show-error --retry 3 "$IMAGE_4" --output "assets/portfolio/blender-grass-scene-original.jpg"
-          printf '%s  %s\n' '99dac6cd5fe92187401bc42740ec81bae603fb8cc5e1231eb3c5bcd752a6e46e' 'assets/portfolio/blender-grass-scene-original.jpg' | sha256sum -c -
-      - name: Publish files
+          curl --fail --location --silent --show-error --retry 3 "$BLENDER_TRANSFER" --output /tmp/blender-transfer.jpg
+          echo "06ec7558ec220324b04a61bfc37040f3a3ba2b93a67143f304f1832c41d28920  /tmp/blender-transfer.jpg" | sha256sum -c -
+          python - <<'PY'
+          from pathlib import Path
+          import zipfile, hashlib, io
+          raw=Path('/tmp/blender-transfer.jpg').read_bytes()
+          marker=b'\nJUSTIN-BLENDER-ARCHIVE-2026\n'
+          assert raw.count(marker)==1,'Archive marker mismatch'
+          expected={"blender-neon-character-enhanced.png":"82e758a7664264351f5e5f6cf7b381f95cb24ae7dbf1588ecd2e03712bc32262","blender-grass-scene-enhanced.png":"11691f4aeb8cb9a3dc03f6a74121854e9307eec4b6f809a7cf415d5c5749d760","blender-neon-character-original.jpg":"762e134fef85e4cc833b2cd66f2229bba88727f90ebfd53bc0d48bac6e6b4b2d","blender-grass-scene-original.jpg":"99dac6cd5fe92187401bc42740ec81bae603fb8cc5e1231eb3c5bcd752a6e46e"}
+          target=Path('assets/portfolio')
+          with zipfile.ZipFile(io.BytesIO(raw.split(marker,1)[1])) as archive:
+            assert set(archive.namelist())==set(expected),'Unexpected image filenames'
+            for filename, checksum in expected.items():
+              data=archive.read(filename)
+              assert hashlib.sha256(data).hexdigest()==checksum,filename+' checksum mismatch'
+              if filename.endswith('.png'): assert data.startswith(b'\x89PNG\r\n\x1a\n'),filename
+              if filename.endswith('.jpg'): assert data.startswith(b'\xff\xd8'),filename
+              (target/filename).write_bytes(data)
+              print('Verified',filename,len(data))
+          PY
+      - name: Publish original and clarified screenshots
         run: |
           set -euo pipefail
           git config user.name 'github-actions[bot]'
