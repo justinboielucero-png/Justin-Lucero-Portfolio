@@ -1172,7 +1172,7 @@ body::after{
 </style><link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&display=swap">
-<link rel="stylesheet" href="assets/portfolio-layout-v2.css?v=5">
+<link rel="stylesheet" href="assets/portfolio-layout-v2.css?v=6">
 </head>
 <body>
 <div id="bar"></div><div id="cd"></div><div id="cr"></div><canvas id="gl"></canvas>
@@ -1438,10 +1438,17 @@ body::after{
             <div class="visual-category-header"><span class="visual-work-meta">03 / DIGITAL MEDIA</span><span class="visual-category-count">GALLERY / 03</span></div>
             <h4>Video Editing</h4>
             <p>Edited videos, production work, and behind-the-scenes project stills.</p>
-            <div class="visual-empty-media" aria-label="Video Editing photos not yet uploaded">
-              <span class="visual-empty-glyph" aria-hidden="true">+</span>
-              <span>Photos to be added</span>
+            <div class="visual-blender-gallery visual-video-gallery" aria-label="Video editing project screenshots">
+              <button type="button" class="blender-image-card" data-video-file data-src="assets/portfolio/video-editing-workstation.jpg" data-original="assets/portfolio/video-editing-workstation.jpg" data-kind="image" data-title="Editing workstation" data-filename="video-editing-workstation.jpg" aria-label="Enlarge Editing workstation">
+                <span class="blender-image-frame"><img src="assets/portfolio/video-editing-workstation.jpg" width="1798" height="2048" loading="lazy" decoding="async" alt="Dark workstation with video editor at dual monitors, multi-track editing timeline on center screen, and blue RGB computer"></span>
+                <span class="blender-image-caption"><strong>Editing workstation</strong><span>01 / 02 <span aria-hidden="true">↗</span></span></span>
+              </button>
+              <button type="button" class="blender-image-card" data-video-file data-src="assets/portfolio/video-editing-capcut-timeline.jpg" data-original="assets/portfolio/video-editing-capcut-timeline.jpg" data-kind="image" data-title="CapCut project timeline" data-filename="video-editing-capcut-timeline.jpg" aria-label="Enlarge CapCut project timeline">
+                <span class="blender-image-frame"><img src="assets/portfolio/video-editing-capcut-timeline.jpg" width="2048" height="1106" loading="lazy" decoding="async" alt="CapCut video editing application with a vertical video preview and multi-layer timeline"></span>
+                <span class="blender-image-caption"><strong>CapCut project timeline</strong><span>02 / 02 <span aria-hidden="true">↗</span></span></span>
+              </button>
             </div>
+            <p class="blender-gallery-note">2 original video-editing screenshots · full-resolution viewing</p>
           </article>
           <article class="visual-work-card visual-category-card">
             <div class="visual-category-header"><span class="visual-work-meta">04 / HARDWARE</span><span class="visual-category-count">GALLERY / 04</span></div>
@@ -1624,5 +1631,5 @@ const rm=matchMedia('(prefers-reduced-motion:reduce)').matches;let T=0;const col
  </div>
 </div>
 <link rel="stylesheet" href="assets/prelim-gallery.css?v=1">
-<script src="assets/prelim-gallery.js?v=4" defer></script>
+<script src="assets/prelim-gallery.js?v=5" defer></script>
 </body></html>

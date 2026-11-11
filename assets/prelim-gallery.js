@@ -23,7 +23,8 @@
   });
   const blenderItems=[...document.querySelectorAll('[data-blender-file]')];
   const pubmatItems=[...document.querySelectorAll('[data-pubmat-file]')];
-  const all=[...galleries.flatMap(g=>g.items),...blenderItems,...pubmatItems];
+  const videoItems=[...document.querySelectorAll('[data-video-file]')];
+  const all=[...galleries.flatMap(g=>g.items),...blenderItems,...pubmatItems,...videoItems];
   const kicker=dialog.querySelector('.prelim-viewer-kicker');
   const stage=document.getElementById('prelim-viewer-stage');
   const img=document.getElementById('prelim-viewer-image');
@@ -83,7 +84,7 @@
     if(isPdf){pdf.title=card.dataset.title+' PDF preview';pdf.src=src+'#toolbar=1&navpanes=0'}
     else{img.alt=card.dataset.title;img.src=src}
     const gallery=galleries.find(g=>g.items.includes(card));
-    kicker.textContent=card.hasAttribute('data-blender-file')?'BLENDER / CREATIVE WORK':card.hasAttribute('data-pubmat-file')?'PUBMATS / JRU':(gallery?gallery.term:'COURSEWORK')+' / FILE VIEWER';
+    kicker.textContent=card.hasAttribute('data-blender-file')?'BLENDER / CREATIVE WORK':card.hasAttribute('data-pubmat-file')?'PUBMATS / JRU':card.hasAttribute('data-video-file')?'VIDEO EDITING / CREATIVE WORK':(gallery?gallery.term:'COURSEWORK')+' / FILE VIEWER';
     title.textContent=card.dataset.title;
     filename.textContent=card.dataset.filename;
     filetype.textContent=isPdf?'ORIGINAL PDF':'ORIGINAL IMAGE';
@@ -99,7 +100,7 @@
   }
   function show(card){
     restoreFocus=card;
-    active=card.hasAttribute('data-blender-file')?blenderItems:card.hasAttribute('data-pubmat-file')?pubmatItems:visible().filter(item=>!item.hasAttribute('data-blender-file')&&!item.hasAttribute('data-pubmat-file'));
+    active=card.hasAttribute('data-blender-file')?blenderItems:card.hasAttribute('data-pubmat-file')?pubmatItems:card.hasAttribute('data-video-file')?videoItems:visible().filter(item=>!item.hasAttribute('data-blender-file')&&!item.hasAttribute('data-pubmat-file')&&!item.hasAttribute('data-video-file'));
     current=active.indexOf(card);
     if(current<0)return;
     dialog.hidden=false;document.body.classList.add('prelim-modal-open');
