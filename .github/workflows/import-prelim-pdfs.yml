@@ -1,0 +1,52 @@
+name: Import original Prelim PDF documents
+on:
+  push:
+    branches: [main]
+    paths: [.github/workflows/import-prelim-pdfs.yml]
+permissions:
+  contents: write
+jobs:
+  original-pdfs:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+      - name: Retrieve and verify original Prelim document archive
+        env:
+          DOCUMENT_SOURCE: "https://d2jqrm6oza8nb6.cloudfront.net/datasets/7242677d-bcd1-4493-b757-d03bc1b9568b.jpg?_jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJrZXlIYXNoIjoiYjQ5MjZkYTBkOTdlZDI1NyIsImJ1Y2tldCI6InJ1bndheS1kYXRhc2V0cyIsInN0YWdlIjoicHJvZCIsImV4cCI6MTc5NDQ5MzYwMH0.Z-jAZ8X3n8Q1Mu32Ez9Hfp6ocLcT8J-dTZglbvKEti0"
+        run: |
+          set -euo pipefail
+          curl -fsSL --retry 3 "$DOCUMENT_SOURCE" -o /tmp/prelim-carrier.jpg
+          echo 'e3ba1ba4ed898d55b209b9d5004df603d0f0be967f70b2ee4a70a6f1246a0fca  /tmp/prelim-carrier.jpg' | sha256sum -c -
+          python - <<'PY'
+          from pathlib import Path
+          import hashlib, zipfile, io
+          raw=Path('/tmp/prelim-carrier.jpg').read_bytes()
+          marker=b'\nPORTFOLIO-PRELIM-PDF-ARCHIVE-2026\n'
+          assert raw.count(marker)==1, 'Archive marker missing or repeated'
+          allow={
+              'prelim-pt1-flowchart-symbols.pdf':'3e7fcbbb349435f3cd75e5c91ea306b7477b26efc674041ba692b355b07365ac',
+              'prelim-pt2-algorithms.pdf':'d1d2c698f421a764182227ece3439b26ea70c05ce28521f7bd5d597df1915e9a',
+              'prelim-p1-decision-flowcharts.pdf':'e939ac41b4cd8e81a489b1dabd954ba4ce36bf9a88d42cb835f4461338440cc1'
+          }
+          destination=Path('assets/prelim')
+          destination.mkdir(parents=True,exist_ok=True)
+          with zipfile.ZipFile(io.BytesIO(raw.split(marker,1)[1])) as archive:
+              assert set(archive.namelist())==set(allow), 'Archive content mismatch'
+              for name, expected in allow.items():
+                  payload=archive.read(name)
+                  assert payload.startswith(b'%PDF-'), name+' is not PDF'
+                  assert hashlib.sha256(payload).hexdigest()==expected, name+' checksum mismatch'
+                  (destination/name).write_bytes(payload)
+                  print('Verified original:',name,len(payload))
+          PY
+      - name: Commit verified original PDFs
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add assets/prelim/*.pdf
+          if ! git diff --cached --quiet; then
+            git commit -m 'Add three original Prelim PDFs without conversion'
+            git pull --rebase
+            git push origin HEAD:main
+          fi
