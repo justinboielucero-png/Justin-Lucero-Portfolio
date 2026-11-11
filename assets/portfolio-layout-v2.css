@@ -1,45 +1,5 @@
-/* JB / 2026 — compositional art direction, desktop + mobile */
-:root{--portfolio-blue:#4299f7;--portfolio-ice:#abd6ff;--portfolio-border:rgba(101,163,236,.23)}
-body{background:#030914}
-body::before{content:"";position:fixed;inset:0;z-index:1;pointer-events:none;background-image:linear-gradient(rgba(82,146,218,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(82,146,218,.035) 1px,transparent 1px);background-size:86px 86px;mask-image:linear-gradient(90deg,transparent 0%,#000 60%,transparent 100%)}
-#gl{opacity:.2!important;filter:saturate(.75);mask-image:linear-gradient(90deg,transparent 10%,transparent 45%,#000 90%)}
-main>section{max-width:1820px;margin-inline:auto;position:relative}
-main>section:not(#home){border-top:1px solid rgba(94,151,223,.13)}
-main>section:not(#home)::before{content:"";position:absolute;top:-1px;left:var(--page-gutter);height:2px;width:52px;background:linear-gradient(90deg,#5aa7ff,transparent)}
-.studio-brand{position:fixed;z-index:51;left:var(--page-gutter);top:calc(22px + env(safe-area-inset-top,0px));display:flex;align-items:center;gap:12px;text-decoration:none;color:#e7f2fd}
-.studio-brand>strong{display:grid;place-items:center;font:700 16px/1 'Fira Code',monospace;letter-spacing:-.12em;width:43px;height:43px;background:#0b1c32;border:1px solid #335e8f;border-radius:10px}
-.studio-brand>strong span{color:#61aeff}
-.studio-brand small{font:700 9px/1.7 'Manrope',sans-serif;letter-spacing:.10em;color:#a2bad4}
-nav{background:rgba(4,12,24,.93);box-shadow:0 15px 45px #0003;border:1px solid rgba(105,159,225,.22)}
-nav a.on{background:rgba(40,111,210,.25)}
-nav a:focus-visible,.studio-brand:focus-visible,.btn:focus-visible,.contact-link:focus-visible{outline:2px solid #78b8ff;outline-offset:3px}
-
-/* Distinctive two-column homepage */
-#home.hero{display:grid;grid-template-columns:minmax(0,1.08fr) minmax(0,.92fr);grid-template-rows:auto 1fr auto auto;gap:23px clamp(28px,3.5vw,65px);align-items:center;min-height:100svh;padding-top:clamp(132px,14vh,185px)}
-#home.hero>.tag{grid-column:1/-1;grid-row:1;justify-self:start;align-self:center;margin:0}
-#home .hero-copy{grid-column:1;grid-row:2;width:100%;max-width:740px;min-width:0;margin:0!important;padding:10px 0 17px}
-#home .hero-index-label{font-size:10px;letter-spacing:.14em;margin-bottom:22px}
-#home .hero-greeting{font-size:clamp(18px,1.8vw,27px)}
-#home .hero-full-name{font-size:clamp(40px,4.2vw,68px)!important;line-height:1.2;letter-spacing:-.067em}
-#home .hero-full-name .name-last{color:#b4d7ff}
-#home .hero-copy>p{font-size:clamp(14px,1.04vw,17px);line-height:1.9;max-width:54ch;margin-top:25px}
-#home .btns{margin-top:29px}
-#home .btn{display:inline-flex;align-items:center;min-height:45px;border-radius:9px;padding:13px 21px;font-size:12px;font-weight:700}
-#home .btn.main{background:#235dae;box-shadow:0 12px 34px rgba(20,77,148,.25)}
-#home .hero-showcase{grid-column:2;grid-row:2;min-height:clamp(330px,35vw,515px);height:100%;position:relative;overflow:hidden;isolation:isolate;border:1px solid rgba(114,178,246,.28);border-radius:16px;background:radial-gradient(circle at 50% 48%,rgba(33,111,207,.27),transparent 53%),linear-gradient(150deg,#122e4f,#071b31 57%,#050f1d);box-shadow:0 25px 70px rgba(0,0,0,.3)}
-#home .hero-showcase::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(transparent 97%,rgba(89,149,215,.11) 100%),linear-gradient(90deg,transparent 97%,rgba(89,149,215,.11) 100%);background-size:40px 40px;mask-image:radial-gradient(circle at center,#000,transparent 77%)}
-.showcase-top,.showcase-foot{display:flex;justify-content:space-between;gap:12px;position:absolute;left:23px;right:23px;font:700 9px/1.5 'Manrope',sans-serif;color:#87b4e5;letter-spacing:.12em}
-.showcase-top{top:20px}.showcase-foot{bottom:19px}
-.showcase-art{position:absolute;inset:13%;display:grid;place-items:center}
-.showcase-orbit{position:absolute;border:1px solid rgba(97,180,255,.53);border-radius:50%;width:80%;aspect-ratio:1;box-shadow:0 0 0 20px rgba(17,91,193,.035)}
-.orbit-a{transform:rotateX(63deg) rotate(-15deg)}.orbit-b{width:58%;transform:rotateY(70deg) rotate(20deg);border-color:#7ab8f547}
-.showcase-axis{position:absolute;left:8%;right:8%;height:1px;background:linear-gradient(90deg,transparent,#68a7e874,transparent)}
-.showcase-art>strong{position:relative;font:700 clamp(105px,13vw,170px)/1 'Fira Code',monospace;letter-spacing:-.17em;color:#d0e8ffcc;text-shadow:0 15px 35px #0006}
-.showcase-art>strong span{color:#6ab2ff}
-#home .hero-bottom{grid-column:1/-1;grid-row:3;margin:0;padding-top:15px;border-top:1px solid rgba(111,160,219,.20)}
-#home .mq{grid-column:1/-1;grid-row:4;margin:0!important;padding-top:5px;border:0!important}
-#home .mq div#mq{gap:15px 24px}
-#home .mq .skill-pill{font-size:9px}
+/* About, Academics and Reflections visual enhancements only.
+   Welcome and Contact reverted to the original pre-redesign layout. */
 
 /* Asymmetric profile with editorial details */
 #about{padding-top:clamp(109px,9vw,160px)}
@@ -115,27 +75,11 @@ nav a:focus-visible,.studio-brand:focus-visible,.btn:focus-visible,.contact-link
 #reflect .reflection-entry-trigger{min-height:clamp(105px,9vw,145px)}
 #reflect .reflection-term-name{font-size:clamp(47px,5vw,77px)}
 
-/* Contact editorial panel */
-#contact.contact-section{display:block;min-height:0;padding-block:clamp(88px,8vw,132px)}
-#contact .contact-design-shell{display:grid;grid-template-columns:minmax(0,1.08fr) minmax(290px,.92fr);background:linear-gradient(115deg,#0c2745,#081c32 65%,#07182b);border:1px solid #7aaddc3c;border-radius:16px;overflow:hidden;box-shadow:0 25px 70px #0003}
-#contact .contact-design-copy{padding:clamp(27px,4vw,67px);min-width:0}
-#contact .contact-kicker{display:block;margin:20px 0;color:#84bdf3;letter-spacing:.12em;font-size:10px}
-#contact .contact-title{font:700 clamp(46px,5.3vw,84px)/1.13 'Manrope',sans-serif;letter-spacing:-.066em;margin:0 0 28px}
-#contact .contact-title em{color:#92c9ff}
-#contact .contact-design-copy>p{grid-column:auto;grid-row:auto;max-width:55ch;font:400 15px/1.85 'Manrope',sans-serif;color:#aec4d8}
-#contact .contact-link{grid-column:auto;grid-row:auto;display:inline-flex;align-items:center;gap:32px;margin-top:27px;padding:15px 20px;background:#215ca9;border-radius:8px;border-color:#73b4ec79;font-size:13px;font-weight:700;justify-self:start}
-#contact .contact-design-mark{min-height:370px;display:flex;flex-direction:column;justify-content:space-between;padding:clamp(25px,3vw,42px);background:radial-gradient(circle at center,#2868b345,transparent 70%),linear-gradient(#6ea2d910 1px,transparent 1px),linear-gradient(90deg,#6ea2d910 1px,transparent 1px),#081d37;background-size:auto,42px 42px,42px 42px,auto;border-left:1px solid #84b2e528}
-#contact .contact-design-mark>strong{text-align:center;font:700 clamp(85px,12vw,179px)/1 'Fira Code',monospace;letter-spacing:-.14em;color:#e2f1ffcc}
-#contact .contact-design-mark>strong span{color:#54a9ff}
-#contact .contact-design-meta{display:flex;flex-wrap:wrap;justify-content:space-between;gap:9px;font:700 9px/1.5 'Manrope',sans-serif;letter-spacing:.10em;color:#8fb7df}
-footer{display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap;align-items:center;border-top:1px solid #78abdb3b;padding:32px var(--page-gutter)}
-footer a{text-decoration:none;color:#e2f1ff}
 
-/* Compact tablet and mobile parity */
+
+/* Responsive treatments for About, Academics and Reflections only.
+   Welcome and Contact use the original styles from index.html. */
 @media(max-width:1199px){
-  .studio-brand small{display:none}
-  #home.hero{column-gap:24px}
-  #home .hero-full-name{font-size:clamp(37px,4.3vw,59px)!important}
   #about .about{grid-template-columns:minmax(0,.82fr) minmax(0,1.18fr);gap:25px}
   #about .photo.photo--portrait{height:clamp(365px,39vw,450px)}
   #about .fact-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
@@ -146,15 +90,6 @@ footer a{text-decoration:none;color:#e2f1ff}
   #works .visual-work-categories .visual-category-card--last{grid-column:1/-1}
 }
 @media(max-width:760px){
-  .studio-brand{display:none}#gl{opacity:.1!important}
-  nav{left:50%;right:auto;transform:translateX(-50%)}
-  #home.hero{display:flex;flex-direction:column;min-height:100svh;align-items:stretch;gap:20px;padding-top:clamp(126px,16vh,166px)}
-  #home .hero-copy{width:100%;max-width:100%;padding:0}
-  #home .hero-full-name{font-size:clamp(33px,7.5vw,51px)!important}
-  #home .hero-showcase{width:100%;min-height:230px;height:260px;flex:none}
-  .showcase-art>strong{font-size:clamp(85px,24vw,122px)}
-  #home .hero-bottom{margin-top:0}
-  #home .hero-scroll{display:none}
   #about .about{grid-template-columns:1fr;gap:19px}
   #about .photo.photo--portrait{height:auto;min-height:0;max-width:420px;width:100%;aspect-ratio:1/1;margin:0 auto!important}
   #about .about-description{padding:23px}
@@ -166,19 +101,15 @@ footer a{text-decoration:none;color:#e2f1ff}
   #works .archive-card,#works .archive-card:last-child{grid-column:auto;min-height:215px}
   #works .gallery-heading-shell{margin-top:68px}
   #works .visual-work-categories{grid-template-columns:1fr;gap:13px}
-  #works .visual-work-categories .visual-category-card,#works .visual-work-categories .visual-category-card:first-child,#works .visual-work-categories .visual-category-card--last{grid-column:1;min-height:292px}
+  #works .visual-work-categories .visual-category-card,
+  #works .visual-work-categories .visual-category-card:first-child,
+  #works .visual-work-categories .visual-category-card--last{grid-column:1;min-height:292px}
   #works .visual-empty-media{min-height:137px!important}
   #reflect .reflection-editorial-header{grid-template-columns:1fr;gap:0;margin-bottom:27px}
   #reflect .reflection-roadmap{display:none}
   #reflect .reflection-editorial-header .section-heading{font-size:clamp(50px,10vw,72px)}
-  #contact .contact-design-shell{grid-template-columns:1fr}
-  #contact .contact-design-copy{padding:clamp(28px,6vw,42px)}
-  #contact .contact-design-mark{min-height:230px;border-left:0;border-top:1px solid #78b2e62b}
-  #contact .contact-design-mark>strong{font-size:106px}
 }
 @media(max-width:450px){
-  #home .hero-full-name{font-size:clamp(29px,7.6vw,38px)!important}
   #about .fact-grid{grid-template-columns:1fr}
   #works .gallery-heading-shell .items-heading{align-items:start}
-  #contact .contact-title{font-size:clamp(43px,9.4vw,61px)}
 }
