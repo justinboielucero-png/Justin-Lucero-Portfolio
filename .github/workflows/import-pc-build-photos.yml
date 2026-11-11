@@ -16,3 +16,5 @@ jobs:
         run: |
           curl -fLsS --retry 3 "$PHOTO_PACKAGE" -o /tmp/pc-build-transfer.jpg
           echo '01dcd8956dc65fa0551633cea179b69ab6640d1d166627dec3bd4102e6db8988  /tmp/pc-build-transfer.jpg' | sha256sum -c -
+      - name: Verify the extracted image originals
+        run: python scripts/verify_pc_images.py
