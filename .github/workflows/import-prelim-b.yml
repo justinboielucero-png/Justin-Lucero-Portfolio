@@ -1,0 +1,35 @@
+name: Import four original Prelim flowcharts
+on:
+  push:
+    branches: [main]
+    paths: [.github/workflows/import-prelim-b.yml]
+permissions:
+  contents: write
+jobs:
+  import:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+      - name: Copy flowcharts without altering originals
+        env:
+          IMAGE1: "https://d2jqrm6oza8nb6.cloudfront.net/datasets/c1bf69ad-b802-4eb7-a223-7c231a4815ee.jpg?_jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJrZXlIYXNoIjoiYzY3NjVkZGI2ZmQ1ZmJkNiIsImJ1Y2tldCI6InJ1bndheS1kYXRhc2V0cyIsInN0YWdlIjoicHJvZCIsImV4cCI6MTc5NDQ5MDg0M30.gwPyjfo8vZTet-HpLO-CZAgnfUDInc7JNRa5Hgm7adw"
+          IMAGE2: "https://d2jqrm6oza8nb6.cloudfront.net/datasets/ab810c25-ecd3-4494-a0af-1d547f392330.jpg?_jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJrZXlIYXNoIjoiZWFlZTA5ZTUwNzJkOWMxZSIsImJ1Y2tldCI6InJ1bndheS1kYXRhc2V0cyIsInN0YWdlIjoicHJvZCIsImV4cCI6MTc5NDUxNTA0NX0.y4slR-hYi-9rbOHprb84yFOS5pW-RDsfLvha1FyxTNM"
+          IMAGE3: "https://d2jqrm6oza8nb6.cloudfront.net/datasets/64b15085-f6cb-4e5e-bf01-d02fcb1a9a40.jpg?_jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJrZXlIYXNoIjoiN2VhOTJjZDgyNzQ0ZjdiNCIsImJ1Y2tldCI6InJ1bndheS1kYXRhc2V0cyIsInN0YWdlIjoicHJvZCIsImV4cCI6MTc5NDUzNjI4MH0.5CAxFtOuS5WFRxovfmDjJb0mAScSt9j_xGJIjuW55xI"
+          IMAGE4: "https://d2jqrm6oza8nb6.cloudfront.net/datasets/32a550d6-7eee-412d-b693-d3f83b392af1.jpg?_jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJrZXlIYXNoIjoiMDUyNmY3MDA5OGRmNGRhOSIsImJ1Y2tldCI6InJ1bndheS1kYXRhc2V0cyIsInN0YWdlIjoicHJvZCI6MTc5NDQ4MTI4MH0.2L6nFdZzm10am6X4oiq1kM9apID1tfKoHzJfx9L0F3E"
+        run: |
+          set -euo pipefail
+          mkdir -p assets/prelim
+          curl -fsSL --retry 3 "$IMAGE1" -o "assets/prelim/flowchart-temperature.jpg"
+          echo "a3dc91a17e63f931706dcb486fd2b6ccfa0b50eb709144e9c538150fdc989af5  assets/prelim/flowchart-temperature.jpg" | sha256sum -c -
+          curl -fsSL --retry 3 "$IMAGE2" -o "assets/prelim/flowchart-prelim-grade.jpg"
+          echo "fd87db046f33bcc6fd8ebbab1b824ba301590943a372291d0484db16532592af  assets/prelim/flowchart-prelim-grade.jpg" | sha256sum -c -
+          curl -fsSL --retry 3 "$IMAGE3" -o "assets/prelim/flowchart-net-pay.jpg"
+          echo "f671b33f3dd7e0e7288fec8527a977827eb2f807479e196a84c4b9d4bbb276b2  assets/prelim/flowchart-net-pay.jpg" | sha256sum -c -
+          curl -fsSL --retry 3 "$IMAGE4" -o "assets/prelim/flowchart-positive-negative.jpg"
+          echo "36e0232009b07f34d98121cac9c6008163fac50ba1e4be6e27b326d57af9cd58  assets/prelim/flowchart-positive-negative.jpg" | sha256sum -c -
+      - name: Save to main
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add assets/prelim
+          if ! git diff --cached --quiet; then git commit -m 'Add four original Prelim flowcharts'; git pull --rebase; git push; fi
